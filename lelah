@@ -247,7 +247,8 @@ for i,name in ipairs(targetNames) do
     btn.Position = UDim2.new(0,5,0,(i-1)*22)
     btn.Text = FishAliases[name] or name
     btn.TextSize = 8
-    btn.BackgroundColor3 = Color3.fromRGB(170,0,0)
+    btn.BackgroundColor3 = Color3.fromRGB(0,80,0)
+    btn.BackgroundTransparency = 0.3
     btn.TextColor3 = Color3.fromRGB(255,255,255)
 
     btn.MouseButton1Click:Connect(function()
