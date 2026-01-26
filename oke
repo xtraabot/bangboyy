@@ -102,6 +102,11 @@ local btn6 = createButton("FastRod OFF",2,3)
 local btnMinimal = createButton("Minimal",1,4)
 local btnClose = createButton("Close",2,4)
 
+-- override warna background jadi hitam, teks tetap putih (default)
+btnMinimal.BackgroundColor3 = Color3.fromRGB(0,0,0)
+btnClose.BackgroundColor3   = Color3.fromRGB(0,0,0)
+
+
 local icon = Instance.new("TextButton", screenGui)
 icon.Size = UDim2.new(0,30,0,30)
 icon.Position = UDim2.new(0,50,0,50)
