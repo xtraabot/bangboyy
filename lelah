@@ -87,7 +87,8 @@ local function createButton(name, xIndex, yIndex)
     btn.Position = UDim2.new(0,(xIndex-1)*(btnWidth+spacing),0,titleHeight+spacing+(yIndex-1)*(btnHeight+spacing))
     btn.Text = name
     btn.TextSize = 8
-    btn.BackgroundColor3 = Color3.fromRGB(80,80,80)
+    btn.BackgroundColor3 = Color3.fromRGB(170,0,0)
+    btn.BackgroundTransparency = 0.3
     btn.TextColor3 = Color3.fromRGB(255,255,255)
     return btn
 end
@@ -241,7 +242,7 @@ for i,name in ipairs(targetNames) do
     btn.Position = UDim2.new(0,5,0,(i-1)*22)
     btn.Text = FishAliases[name] or name
     btn.TextSize = 8
-    btn.BackgroundColor3 = Color3.fromRGB(80,80,80)
+    btn.BackgroundColor3 = Color3.fromRGB(170,0,0)
     btn.TextColor3 = Color3.fromRGB(255,255,255)
 
     btn.MouseButton1Click:Connect(function()
