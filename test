@@ -76,7 +76,7 @@ local title = Instance.new("TextLabel", menu)
 title.Size = UDim2.new(1, 0, 0, titleHeight)
 title.Text = player.Name .. " | ID: " .. tostring(player.UserId)
 title.TextSize = 8
-title.BackgroundColor3 = Color3.fromRGB(50,50,50)
+title.BackgroundColor3 = Color3.fromRGB(0,80,0)
 title.TextColor3 = Color3.fromRGB(255,255,255)
 
 local function createButton(name, xIndex, yIndex)
