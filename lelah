@@ -102,10 +102,10 @@ local btnMinimal = createButton("Minimal",1,4)
 local btnClose = createButton("Close",2,4)
 
 local icon = Instance.new("TextButton", screenGui)
-icon.Size = UDim2.new(0,28,0,28)
+icon.Size = UDim2.new(0,30,0,30)
 icon.Position = UDim2.new(0,50,0,50)
-icon.Text = "SC"
-icon.TextSize = 11
+icon.Text = "BOY"
+icon.TextSize = 8
 icon.BackgroundColor3 = Color3.fromRGB(80,80,80)
 icon.TextColor3 = Color3.fromRGB(255,255,255)
 icon.Active = true
@@ -116,7 +116,7 @@ btnClose.MouseButton1Click:Connect(function() screenGui:Destroy() end)
 icon.MouseButton1Click:Connect(function() menu.Visible = not menu.Visible end)
 
 local function setOn(btn) btn.BackgroundColor3 = Color3.fromRGB(0,200,0) end
-local function setOff(btn) btn.BackgroundColor3 = Color3.fromRGB(80,80,80) end
+local function setOff(btn) btn.BackgroundColor3 = Color3.fromRGB(170,0,0) end
 
 -- FRAME SUBMENU UNTUK PILIHAN IKAN
 local fishMenu = Instance.new("Frame", menu) -- parent langsung ke menu
@@ -130,9 +130,9 @@ fishMenu.Draggable = true
 -- judul di atas submenu
 local fishTitle = Instance.new("TextLabel", fishMenu)
 fishTitle.Size = UDim2.new(1,0,0,20)
-fishTitle.Text = "Pilih Salah Satu SC nya"
+fishTitle.Text = "Pilih Salah Satu SECRET"
 fishTitle.TextSize = 6
-fishTitle.BackgroundColor3 = Color3.fromRGB(60,60,60)
+fishTitle.BackgroundColor3 = Color3.fromRGB(0,0,0)
 fishTitle.TextColor3 = Color3.fromRGB(255,255,255)
 
 -- tombol Hide List
