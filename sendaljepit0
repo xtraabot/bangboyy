@@ -1,23 +1,58 @@
--- ambil FishingConfig
+-- tunggu sampai FishingConfig ketemu
+local FishingConfig
+repeat
+    for _,v in pairs(getgc(true)) do
+        if type(v)=="table" and rawget(v,"Pity") and rawget(v,"RarityWeights") and rawget(v,"MinigameSettings") then
+            FishingConfig = v
+            break
+        end
+    end
+    task.wait(0.5)
+until FishingConfig
+
+-- tunggu sampai MiniGameSystem ketemu
+local MiniGameSystem
+repeat
+    for _,v in pairs(getgc(true)) do
+        if type(v)=="table" and rawget(v,"Start") and rawget(v,"SetCallbacks") then
+            MiniGameSystem = v
+            break
+        end
+    end
+    task.wait(0.5)
+until MiniGameSystem-- ambil FishingConfig
 local player = game.Players.LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local FishingSystemFolder = ReplicatedStorage:WaitForChild("FishingSystem")
 local FishingConfigModule = FishingSystemFolder:WaitForChild("FishingConfig")
-local FishingConfig = require(FishingConfigModule)
-local MiniGameSystem = require(FishingSystemFolder.FishingModules.MinigameSystem)
 local SecretBackup = loadstring(game:HttpGet("https://raw.githubusercontent.com/xtraabot/bangboyy/refs/heads/main/sendaljepit1"))()
 local FastRodBackup = loadstring(game:HttpGet("https://raw.githubusercontent.com/xtraabot/bangboyy/refs/heads/main/sendaljepit2"))()
 
--- Backup default sekali
-if not getgenv().OriginalTapCounts then
+-- Pastikan FishingConfig & MiniGameSystem sudah ketemu lewat getgc sebelum backup
+if FishingConfig and MiniGameSystem and not getgenv().OriginalTapCounts then
+    -- Backup tap count & fishing time
     getgenv().OriginalTapCounts = {}
     for rodName, taps in pairs(FishingConfig.MinigameSettings.rodTapCount) do
         getgenv().OriginalTapCounts[rodName] = taps
     end
     getgenv().OriginalDefaultTap = FishingConfig.MinigameSettings.rodTapCount.default
     getgenv().OriginalFishingTime = FishingConfig.MinigameSettings.fishingTime
-    getgenv().OriginalApplyZoom = debug.getupvalue(MiniGameSystem.Start, 6)
-    getgenv().OriginalRestoreCamera = debug.getupvalue(MiniGameSystem.SetCallbacks, 2)
+
+    -- Backup fungsi kamera dari MiniGameSystem
+    local okZoom, applyZoom = pcall(function()
+        return debug.getupvalue(MiniGameSystem.Start, 6)
+    end)
+    if okZoom then
+        getgenv().OriginalApplyZoom = applyZoom
+    end
+
+    local okRestore, restoreCam = pcall(function()
+        return debug.getupvalue(MiniGameSystem.SetCallbacks, 2)
+    end)
+    if okRestore then
+        getgenv().OriginalRestoreCamera = restoreCam
+    end
+
     -- Backup kamera manual
     local cam = workspace.CurrentCamera
     getgenv().OriginalFOV = cam.FieldOfView
