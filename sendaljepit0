@@ -3,6 +3,8 @@ local player = game.Players.LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local FishingSystemFolder = ReplicatedStorage:WaitForChild("FishingSystem")
 local FishingConfigModule = FishingSystemFolder:WaitForChild("FishingConfig")
+local FishingConfig = require(FishingConfigModule)
+local MiniGameSystem = require(FishingSystemFolder.FishingModules.MinigameSystem)
 local SecretBackup = loadstring(game:HttpGet("https://raw.githubusercontent.com/xtraabot/bangboyy/refs/heads/main/sendaljepit1"))()
 local FastRodBackup = loadstring(game:HttpGet("https://raw.githubusercontent.com/xtraabot/bangboyy/refs/heads/main/sendaljepit2"))()
 
