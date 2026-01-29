@@ -49,9 +49,12 @@ local DefaultProbabilities = {}
 for _, fish in pairs(FishingConfig.FishTable) do
     DefaultProbabilities[fish.name] = fish.probability
 end
-local screenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+
+-- Buat ScreenGui dengan cara aman
+local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "LimitedEditionMenu"
 screenGui.ResetOnSpawn = false
+screenGui.Parent = player:WaitForChild("PlayerGui")
 
 local padding, titleHeight, btnHeight, spacing, rows, cols = 4, 20, 20, 4, 4, 2
 local menuWidth = 200
