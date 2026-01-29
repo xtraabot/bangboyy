@@ -272,28 +272,6 @@ local function chooseFish(fishName)
     state.fishingInProgress = false
     state.activeFishingTask = nil
     env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
-
-    -- paksa ikan pilihan keluar (langsung override)
-    env.selectFish_upvr = function(...)
-        if selectedFish then
-            return {name = selectedFish, rarity = "Secret", probability = 9999999}
-        else
-            return getgenv().OriginalSelectFish(...)
-        end
-    end
-end
-
--- Hook permanen untuk selectFish (backup agar tidak hilang)
-if not getgenv().HookedSelectFish then
-    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
-    getgenv().HookedSelectFish = true
-    local oldSelect = env.selectFish_upvr
-    env.selectFish_upvr = function(...)
-        if selectedFish then
-            return {name = selectedFish, rarity = "Secret", probability = 9999999}
-        end
-        return oldSelect(...)
-    end
 end
 
 -- loop daftar ikan (buat tombol list)
@@ -343,11 +321,6 @@ end
     state.fishingInProgress = false
     state.activeFishingTask = nil
     env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
-
-    -- paksa rarity selalu Secret
-    env.module_upvr_11.GetRarityWithPity = function(...)
-        return "Secret"
-    end
 end)
 
 -- Secret OFF
@@ -471,28 +444,36 @@ btn6.MouseButton1Click:Connect(function()
     end
 end)
 
+local lastRarity, lastSelect
+
 task.spawn(function()
     while true do
         local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
         if env and env.module_upvr_11 then
-            local oldRarity = env.module_upvr_11.GetRarityWithPity
-            hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
-                if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
-                    return "Secret"
-                end
-                if selectedFish then
-                    return "Secret"
-                end
-                return oldRarity(...)
-            end)
+            -- Hook ulang GetRarityWithPity kalau closure berubah
+            if env.module_upvr_11.GetRarityWithPity ~= lastRarity then
+                lastRarity = env.module_upvr_11.GetRarityWithPity
+                hookfunction(lastRarity, function(...)
+                    if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
+                        return "Secret"
+                    end
+                    if selectedFish then
+                        return "Secret"
+                    end
+                    return lastRarity(...)
+                end)
+            end
 
-            local oldSelect = env.selectFish_upvr
-            hookfunction(env.selectFish_upvr, function(...)
-                if selectedFish then
-                    return {name = selectedFish, rarity = "Secret", probability = 9999999}
-                end
-                return oldSelect(...)
-            end)
+            -- Hook ulang selectFish kalau closure berubah
+            if env.selectFish_upvr ~= lastSelect then
+                lastSelect = env.selectFish_upvr
+                hookfunction(lastSelect, function(...)
+                    if selectedFish then
+                        return {name = selectedFish, rarity = "Secret", probability = 9999999}
+                    end
+                    return lastSelect(...)
+                end)
+            end
         end
         task.wait(2)
     end
