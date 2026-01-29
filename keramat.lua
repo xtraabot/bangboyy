@@ -259,6 +259,7 @@ local function chooseFish(fishName)
     for _, fish in pairs(FishingConfig.FishTable) do
         if fish.name == fishName then
             fish.probability = 9999999
+            -- atur pity sesuai rarity
             if fish.rarity == "Secret" then
                 FishingConfig.Pity.Secret.maxPity = 0.00002
                 FishingConfig.Pity.Secret.baseBoost = 9000000.0
@@ -277,7 +278,7 @@ local function chooseFish(fishName)
     fishMenu.Visible = false
     forceReloadConfig()
 
-    -- reset state FishingSystem
+    -- override ulang + reset state setiap kali pilih ikan
     local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
     env.module_upvr_11 = FishingConfig
     local state = env.tbl_28_upvr
@@ -285,32 +286,28 @@ local function chooseFish(fishName)
     state.fishingInProgress = false
     state.activeFishingTask = nil
     env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
+
+    -- paksa ikan pilihan keluar (langsung override)
+    env.selectFish_upvr = function(...)
+        if selectedFish then
+            return {name = selectedFish, rarity = "Secret", probability = 9999999}
+        else
+            return getgenv().OriginalSelectFish(...)
+        end
+    end
 end
 
--- Hook permanen untuk selectFish (pakai hookfunction agar tidak hilang)
+-- Hook permanen untuk selectFish (backup agar tidak hilang)
 if not getgenv().HookedSelectFish then
     local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
     getgenv().HookedSelectFish = true
     local oldSelect = env.selectFish_upvr
-    hookfunction(env.selectFish_upvr, function(...)
+    env.selectFish_upvr = function(...)
         if selectedFish then
             return {name = selectedFish, rarity = "Secret", probability = 9999999}
         end
         return oldSelect(...)
-    end)
-end
-
--- Hook permanen untuk GetRarityWithPity (pakai hookfunction agar tidak hilang)
-if not getgenv().HookedRarity then
-    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
-    getgenv().HookedRarity = true
-    local oldRarity = env.module_upvr_11.GetRarityWithPity
-    hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
-        if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
-            return "Secret"
-        end
-        return oldRarity(...)
-    end)
+    end
 end
 
 -- loop daftar ikan (buat tombol list)
@@ -485,5 +482,41 @@ btn6.MouseButton1Click:Connect(function()
     local cam = workspace.CurrentCamera
     if getgenv().OriginalFOV then cam.FieldOfView = getgenv().OriginalFOV end
     if getgenv().OriginalCamType then cam.CameraType = getgenv().OriginalCamType
+    end
+end)
+
+-- Auto rehook loop agar tidak hilang setelah 1x siklus
+task.spawn(function()
+    while true do
+        local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+        if env and env.module_upvr_11 then
+            -- Hook GetRarityWithPity ulang jika reset
+            if not getgenv().HookedRarity then
+                getgenv().HookedRarity = true
+                local oldRarity = env.module_upvr_11.GetRarityWithPity
+                hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
+                    if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
+                        return "Secret"
+                    end
+                    if selectedFish then
+                        return "Secret"
+                    end
+                    return oldRarity(...)
+                end)
+            end
+
+            -- Hook selectFish ulang jika reset
+            if not getgenv().HookedSelectFish then
+                getgenv().HookedSelectFish = true
+                local oldSelect = env.selectFish_upvr
+                hookfunction(env.selectFish_upvr, function(...)
+                    if selectedFish then
+                        return {name = selectedFish, rarity = "Secret", probability = 9999999}
+                    end
+                    return oldSelect(...)
+                end)
+            end
+        end
+        task.wait(2) -- cek ulang tiap 2 detik
     end
 end)
