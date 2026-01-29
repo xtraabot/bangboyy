@@ -304,6 +304,18 @@ btn1.MouseButton1Click:Connect(function()
     forceReloadConfig()
 local env = getsenv(game.Players.LocalPlayer.PlayerScripts.FishingSystem)
 env.module_upvr_11 = FishingConfig
+-- Update cache FishingSysytem
+local env = getsenv(game.Players.LocalPlayer.PlayerScripts.FishingSystem)
+env.module_upvr_11 = FishingConfig
+
+--Reset state internal
+local state = env.tbl_28_upvr
+state.casted = false
+state.fishingInProgress = false
+state.activeFishingTask = nil
+
+-- Reset pity tracker
+env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
 end)
 
 
@@ -330,6 +342,18 @@ btn2.MouseButton1Click:Connect(function()
     forceReloadConfig()
 local env = getsenv(game.Players.LocalPlayer.PlayerScripts.FishingSystem)
 env.module_upvr_11 = FishingConfig
+-- Update cache FishingSysytem
+local env = getsenv(game.Players.LocalPlayer.PlayerScripts.FishingSystem)
+env.module_upvr_11 = FishingConfig
+
+--Reset state internal
+local state = env.tbl_28_upvr
+state.casted = false
+state.fishingInProgress = false
+state.activeFishingTask = nil
+
+-- Reset pity tracker
+env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
 end)
 
 -- Submenu Fish
@@ -365,6 +389,18 @@ btn4.MouseButton1Click:Connect(function()
     forceReloadConfig()
 local env = getsenv(game.Players.LocalPlayer.PlayerScripts.FishingSystem)
 env.module_upvr_11 = FishingConfig
+-- Update cache FishingSysytem
+local env = getsenv(game.Players.LocalPlayer.PlayerScripts.FishingSystem)
+env.module_upvr_11 = FishingConfig
+
+--Reset state internal
+local state = env.tbl_28_upvr
+state.casted = false
+state.fishingInProgress = false
+state.activeFishingTask = nil
+
+-- Reset pity tracker
+env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
 end)
 
 -- FAST FISHING ON
