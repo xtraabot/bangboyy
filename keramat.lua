@@ -49,12 +49,9 @@ local DefaultProbabilities = {}
 for _, fish in pairs(FishingConfig.FishTable) do
     DefaultProbabilities[fish.name] = fish.probability
 end
-
--- Buat ScreenGui dengan cara aman
-local screenGui = Instance.new("ScreenGui")
+local screenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 screenGui.Name = "LimitedEditionMenu"
 screenGui.ResetOnSpawn = false
-screenGui.Parent = player:WaitForChild("PlayerGui")
 
 local padding, titleHeight, btnHeight, spacing, rows, cols = 4, 20, 20, 4, 4, 2
 local menuWidth = 200
@@ -126,20 +123,6 @@ local btn5 = createButton("FastRod ON",1,3)
 local btn6 = createButton("FastRod OFF",2,3)
 local btnMinimal = createButton("Minimal",1,4)
 local btnClose = createButton("Close",2,4)
-
--- Hook permanen untuk GetRarityWithPity
-if not getgenv().HookedRarity then
-    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
-    getgenv().HookedRarity = true
-    local oldRarity = env.module_upvr_11.GetRarityWithPity
-    env.module_upvr_11.GetRarityWithPity = function(...)
-        -- cek apakah tombol Secret ON aktif (warna hijau)
-        if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
-            return "Secret"
-        end
-        return oldRarity(...)
-    end
-end
 
 -- override warna background jadi hitam, teks tetap putih (default)
 btnMinimal.BackgroundColor3 = Color3.fromRGB(0,0,0)
@@ -277,7 +260,7 @@ local function chooseFish(fishName)
     fishMenu.Visible = false
     forceReloadConfig()
 
-    -- reset state FishingSystem
+    -- update FishingSystem state
     local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
     env.module_upvr_11 = FishingConfig
     local state = env.tbl_28_upvr
@@ -285,35 +268,17 @@ local function chooseFish(fishName)
     state.fishingInProgress = false
     state.activeFishingTask = nil
     env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
-end
 
--- Hook permanen untuk selectFish (pakai hookfunction agar tidak hilang)
-if not getgenv().HookedSelectFish then
-    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
-    getgenv().HookedSelectFish = true
-    local oldSelect = env.selectFish_upvr
-    hookfunction(env.selectFish_upvr, function(...)
+    -- Override selectFish agar ikan pilihan selalu keluar
+    env.selectFish_upvr = function(...)
         if selectedFish then
             return {name = selectedFish, rarity = "Secret", probability = 9999999}
+        else
+            return getgenv().OriginalSelectFish(...)
         end
-        return oldSelect(...)
-    end)
+    end
 end
 
--- Hook permanen untuk GetRarityWithPity (pakai hookfunction agar tidak hilang)
-if not getgenv().HookedRarity then
-    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
-    getgenv().HookedRarity = true
-    local oldRarity = env.module_upvr_11.GetRarityWithPity
-    hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
-        if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
-            return "Secret"
-        end
-        return oldRarity(...)
-    end)
-end
-
--- loop daftar ikan (buat tombol list)
 for i,name in ipairs(targetNames) do
     local btn = Instance.new("TextButton", scroll)
     btn.Size = UDim2.new(1,-10,0,20)
@@ -329,7 +294,7 @@ for i,name in ipairs(targetNames) do
 end
 
 -- Secret ON
-    btn1.MouseButton1Click:Connect(function()
+btn1.MouseButton1Click:Connect(function()
     setOn(btn1)
 
     -- ubah semua ikan Secret/Limited jadi probability tinggi
@@ -352,7 +317,7 @@ end
     -- reload config
     forceReloadConfig()
 
-    -- override ulang + reset state
+    -- update FishingSystem state
     local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
     env.module_upvr_11 = FishingConfig
     local state = env.tbl_28_upvr
