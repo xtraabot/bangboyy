@@ -274,9 +274,27 @@ local function chooseFish(fishName)
     setOn(btn3)
     fishMenu.Visible = false
     forceReloadConfig()
+
+    -- override ulang + reset state setiap kali pilih ikan
+    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+    env.module_upvr_11 = FishingConfig
+    local state = env.tbl_28_upvr
+    state.casted = false
+    state.fishingInProgress = false
+    state.activeFishingTask = nil
+    env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
+
+    -- paksa ikan pilihan keluar (langsung override)
+    env.selectFish_upvr = function(...)
+        if selectedFish then
+            return {name = selectedFish, rarity = "Secret", probability = 9999999}
+        else
+            return getgenv().OriginalSelectFish(...)
+        end
+    end
 end
 
--- Hook permanen untuk selectFish (cukup sekali)
+-- Hook permanen untuk selectFish (backup agar tidak hilang)
 if not getgenv().HookedSelectFish then
     local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
     getgenv().HookedSelectFish = true
@@ -289,7 +307,7 @@ if not getgenv().HookedSelectFish then
     end
 end
 
--- loop daftar ikan (cukup sekali)
+-- loop daftar ikan (buat tombol list)
 for i,name in ipairs(targetNames) do
     local btn = Instance.new("TextButton", scroll)
     btn.Size = UDim2.new(1,-10,0,20)
@@ -305,7 +323,7 @@ for i,name in ipairs(targetNames) do
 end
 
 -- Secret ON
-btn1.MouseButton1Click:Connect(function()
+    btn1.MouseButton1Click:Connect(function()
     setOn(btn1)
 
     -- ubah semua ikan Secret/Limited jadi probability tinggi
