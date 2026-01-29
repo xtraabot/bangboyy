@@ -12,7 +12,6 @@ if not getgenv().OriginalSelectFish then
     getgenv().OriginalSelectFish = env.selectFish_upvr
 end
 
--- Fungsi reload paksa yang lengkap
 local function forceReloadConfig()
     package.loaded[FishingConfigModule] = nil
     FishingConfig = require(FishingConfigModule)
@@ -26,8 +25,24 @@ local function forceReloadConfig()
     for _, fish in pairs(FishingConfig.FishTable) do
         DefaultProbabilities[fish.name] = fish.probability
     end
-end
 
+    -- pasang hook ulang setiap kali reload
+    local oldRarity = FishingConfig.GetRarityWithPity
+    FishingConfig.GetRarityWithPity = function(...)
+        if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) or selectedFish then
+            return "Secret"
+        end
+        return oldRarity(...)
+    end
+
+    local oldSelect = FishingConfig.selectFish
+    FishingConfig.selectFish = function(...)
+        if selectedFish then
+            return {name = selectedFish, rarity = "Secret", probability = 9999999}
+        end
+        return oldSelect(...)
+    end
+end
 -- Backup default sekali
 if not getgenv().OriginalTapCounts then
     getgenv().OriginalTapCounts = {}
@@ -42,12 +57,6 @@ if not getgenv().OriginalTapCounts then
     local cam = workspace.CurrentCamera
     getgenv().OriginalFOV = cam.FieldOfView
     getgenv().OriginalCamType = cam.CameraType
-end
-
--- Backup probability default dari FishingConfig langsung
-local DefaultProbabilities = {}
-for _, fish in pairs(FishingConfig.FishTable) do
-    DefaultProbabilities[fish.name] = fish.probability
 end
 
 -- Buat ScreenGui dengan cara aman
