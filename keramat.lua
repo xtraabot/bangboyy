@@ -118,7 +118,13 @@ btn.Position = UDim2.new(0, posX, 0, posY)
     return btn
 end
 
-local btn1 = createButton("Secret ON",1,1)
+
+-- override warna background jadi hitam, teks tetap putih (default)
+btnMinimal.BackgroundColor3 = Color3.fromRGB(0,0,0)
+btnClose.BackgroundColor3   = Color3.fromRGB(0,0,0)
+
+
+local icon = Instance.new("TextButton", screenGui)local btn1 = createButton("Secret ON",1,1)
 local btn2 = createButton("Secret OFF",2,1)
 local btn3 = createButton("Special Menu",1,2)
 local btn4 = createButton("Special OFF",2,2)
@@ -132,21 +138,14 @@ if not getgenv().HookedRarity then
     local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
     getgenv().HookedRarity = true
     local oldRarity = env.module_upvr_11.GetRarityWithPity
-    env.module_upvr_11.GetRarityWithPity = function(...)
-        -- cek apakah tombol Secret ON aktif (warna hijau)
-        if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
-            return "Secret"
-        end
-        return oldRarity(...)
+    hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
+    if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
+        return "Secret"
     end
+    return oldRarity(...)
+    end)
 end
 
--- override warna background jadi hitam, teks tetap putih (default)
-btnMinimal.BackgroundColor3 = Color3.fromRGB(0,0,0)
-btnClose.BackgroundColor3   = Color3.fromRGB(0,0,0)
-
-
-local icon = Instance.new("TextButton", screenGui)
 icon.Size = UDim2.new(0,30,0,30)
 icon.Position = UDim2.new(0,50,0,50)
 icon.Text = "🇵🇸"
