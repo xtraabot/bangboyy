@@ -259,7 +259,6 @@ local function chooseFish(fishName)
     for _, fish in pairs(FishingConfig.FishTable) do
         if fish.name == fishName then
             fish.probability = 9999999
-            -- atur pity sesuai rarity
             if fish.rarity == "Secret" then
                 FishingConfig.Pity.Secret.maxPity = 0.00002
                 FishingConfig.Pity.Secret.baseBoost = 9000000.0
@@ -278,7 +277,7 @@ local function chooseFish(fishName)
     fishMenu.Visible = false
     forceReloadConfig()
 
-    -- override ulang + reset state setiap kali pilih ikan
+    -- reset state FishingSystem
     local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
     env.module_upvr_11 = FishingConfig
     local state = env.tbl_28_upvr
@@ -286,28 +285,32 @@ local function chooseFish(fishName)
     state.fishingInProgress = false
     state.activeFishingTask = nil
     env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
-
-    -- paksa ikan pilihan keluar (langsung override)
-    env.selectFish_upvr = function(...)
-        if selectedFish then
-            return {name = selectedFish, rarity = "Secret", probability = 9999999}
-        else
-            return getgenv().OriginalSelectFish(...)
-        end
-    end
 end
 
--- Hook permanen untuk selectFish (backup agar tidak hilang)
+-- Hook permanen untuk selectFish (pakai hookfunction agar tidak hilang)
 if not getgenv().HookedSelectFish then
     local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
     getgenv().HookedSelectFish = true
     local oldSelect = env.selectFish_upvr
-    env.selectFish_upvr = function(...)
+    hookfunction(env.selectFish_upvr, function(...)
         if selectedFish then
             return {name = selectedFish, rarity = "Secret", probability = 9999999}
         end
         return oldSelect(...)
-    end
+    end)
+end
+
+-- Hook permanen untuk GetRarityWithPity (pakai hookfunction agar tidak hilang)
+if not getgenv().HookedRarity then
+    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+    getgenv().HookedRarity = true
+    local oldRarity = env.module_upvr_11.GetRarityWithPity
+    hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
+        if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
+            return "Secret"
+        end
+        return oldRarity(...)
+    end)
 end
 
 -- loop daftar ikan (buat tombol list)
