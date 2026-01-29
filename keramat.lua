@@ -444,36 +444,28 @@ btn6.MouseButton1Click:Connect(function()
     end
 end)
 
-local lastRarity, lastSelect
-
 task.spawn(function()
     while true do
         local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
         if env and env.module_upvr_11 then
-            -- Hook ulang GetRarityWithPity kalau closure berubah
-            if env.module_upvr_11.GetRarityWithPity ~= lastRarity then
-                lastRarity = env.module_upvr_11.GetRarityWithPity
-                hookfunction(lastRarity, function(...)
-                    if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
-                        return "Secret"
-                    end
-                    if selectedFish then
-                        return "Secret"
-                    end
-                    return lastRarity(...)
-                end)
-            end
+            local oldRarity = env.module_upvr_11.GetRarityWithPity
+            hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
+                if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
+                    return "Secret"
+                end
+                if selectedFish then
+                    return "Secret"
+                end
+                return oldRarity(...)
+            end)
 
-            -- Hook ulang selectFish kalau closure berubah
-            if env.selectFish_upvr ~= lastSelect then
-                lastSelect = env.selectFish_upvr
-                hookfunction(lastSelect, function(...)
-                    if selectedFish then
-                        return {name = selectedFish, rarity = "Secret", probability = 9999999}
-                    end
-                    return lastSelect(...)
-                end)
-            end
+            local oldSelect = env.selectFish_upvr
+            hookfunction(env.selectFish_upvr, function(...)
+                if selectedFish then
+                    return {name = selectedFish, rarity = "Secret", probability = 9999999}
+                end
+                return oldSelect(...)
+            end)
         end
         task.wait(2)
     end
