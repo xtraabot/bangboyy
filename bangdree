@@ -23,33 +23,11 @@ if not getgenv().OriginalTapCounts then
     getgenv().OriginalCamType = cam.CameraType
 end
 
--- probability default
-local DefaultProbabilities = {
-    ["Leviathan Core"]   = 1e-07,
-    ["Joar Cusyu"]       = 1e-07,
-    ["While Bloodmon"]   = 1e-09,
-    ["While BloodShack"] = 1e-09,
-    ["Nagasa Putra"]     = 1e-09,
-    ["Cype Darcogreen"]  = 0.00001,
-    ["Cype Darcopink"]   = 0.00001,
-    ["Cype Darcoyellow"] = 0.00001,
-    ["Doplin Pink"]      = 1e-07,
-    ["Doplin Blue"]      = 1e-07,
-    ["Whale Shark"]      = 0.0001,
-    ["Paus Corda"]       = 0.0001,
-    ["King Monster"]     = 0.000001,
-    ["Hammer Shark"]     = 0.001,
-    ["Jellyfish core"]   = 0.001,
-    ["Voyage"]           = 0.001,
-    ["Amber"]            = 0.001,
-    ["Megalodon Core"]   = 0.001,
-    ["Ciyup Carber"]     = 0.001,
-    ["Cindera Fish"]     = 0.0001,
-    ["Kuzjuy Shark"]     = 0.0001,
-    ["Moster Kelelawar"] = 1e-07,
-    ["Suytu Care"]       = 0.000001
-}
-
+-- Backup probability default dari FishingConfig langsung
+local DefaultProbabilities = {}
+for _, fish in pairs(FishingConfig.FishTable) do
+    DefaultProbabilities[fish.name] = fish.probability
+end
 local screenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 screenGui.Name = "LimitedEditionMenu"
 screenGui.ResetOnSpawn = false
@@ -241,25 +219,24 @@ local function chooseFish(fishName)
     end
 
     -- hanya ikan yang dipilih diubah
-for _, fish in pairs(FishingConfig.FishTable) do
-    if string.lower(string.gsub(fish.name, "%s+", "")) == string.lower(string.gsub(fishName, "%s+", "")) then
-        fish.probability = 9999999
+    for _, fish in pairs(FishingConfig.FishTable) do
+        if fish.name == fishName then
+            fish.probability = 9999999
 
-        -- cek rarity langsung dari config (pakai lower biar aman)
-        local rarity = string.lower(fish.rarity)
-        if rarity == "secret" then
-            FishingConfig.Pity.Secret.maxPity = 0.00002
-            FishingConfig.Pity.Secret.baseBoost = 9000000.0
-            FishingConfig.Pity.Secret.maxMultiplier = 9000000.0
-            FishingConfig.RarityWeights.Secret = 9000000
-        elseif rarity == "limited" then
-            FishingConfig.Pity.Limited.maxPity = 0.00002
-            FishingConfig.Pity.Limited.baseBoost = 9000000.5
-            FishingConfig.Pity.Limited.maxMultiplier = 9000000.0
-            FishingConfig.RarityWeights.Limited = 9000000
+            -- cek rarity langsung dari config
+            if fish.rarity == "Secret" then
+                FishingConfig.Pity.Secret.maxPity = 0.00002
+                FishingConfig.Pity.Secret.baseBoost = 9000000.0
+                FishingConfig.Pity.Secret.maxMultiplier = 9000000.0
+                FishingConfig.RarityWeights.Secret = 9000000
+            elseif fish.rarity == "Limited" then
+                FishingConfig.Pity.Limited.maxPity = 0.00002
+                FishingConfig.Pity.Limited.baseBoost = 9000000.5
+                FishingConfig.Pity.Limited.maxMultiplier = 9000000.0
+                FishingConfig.RarityWeights.Limited = 9000000
+            end
         end
     end
-end
 
     setOn(btn3)
     fishMenu.Visible = false
@@ -279,17 +256,26 @@ for i,name in ipairs(targetNames) do
     end)
 end
 
+-- Tambahkan fungsi reload paksa
+local function forceReloadConfig()
+    -- timpa ulang module FishingConfig di ReplicatedStorage
+    FishingSystemFolder.FishingConfig = FishingConfig
+    -- jika MiniGameSystem punya fungsi reload, bisa dipanggil juga
+    if MiniGameSystem.ReloadConfig then
+        MiniGameSystem:ReloadConfig(FishingConfig)
+    end
+end
+
+-- Contoh perbaikan di tombol 1
 btn1.MouseButton1Click:Connect(function()
     setOn(btn1)
 
-    -- Paksa semua ikan Secret probability tinggi
     for _, fish in pairs(FishingConfig.FishTable) do
         if fish.rarity == "Secret" then
             fish.probability = 9999999
         end
     end
 
-    -- Atur nilai pity & rarity
     FishingConfig.Pity.Secret.maxPity = 0.00002
     FishingConfig.Pity.Secret.baseBoost = 12000000.0
     FishingConfig.Pity.Secret.maxMultiplier = 5000000.0
@@ -298,20 +284,19 @@ btn1.MouseButton1Click:Connect(function()
     FishingConfig.Pity.Limited.maxMultiplier = 60000000.0
     FishingConfig.RarityWeights.Secret = 9000
     FishingConfig.RarityWeights.Limited = 9000
+
+    -- panggil reload paksa
+    forceReloadConfig()
 end)
 
-
+-- Perbaikan sama juga di btn2, btn3, btn4
 btn2.MouseButton1Click:Connect(function()
     setOff(btn1)
-
-    -- Reset probability semua ikan ke default
     for _, fish in pairs(FishingConfig.FishTable) do
         if DefaultProbabilities[fish.name] then
             fish.probability = DefaultProbabilities[fish.name]
         end
     end
-
-    -- Kembalikan nilai pity & rarity ke normal
     FishingConfig.Pity.Secret.maxPity = 2000
     FishingConfig.Pity.Secret.baseBoost = 0.3
     FishingConfig.Pity.Secret.maxMultiplier = 1.6
@@ -320,11 +305,12 @@ btn2.MouseButton1Click:Connect(function()
     FishingConfig.Pity.Limited.maxMultiplier = 1.9
     FishingConfig.RarityWeights.Secret = 0.2
     FishingConfig.RarityWeights.Limited = 0.001
+
+    forceReloadConfig()
 end)
 
 btn3.MouseButton1Click:Connect(function()
-    -- jangan langsung setOn, cukup buka menu list
-    fishMenu.Position = UDim2.new(1, 10, 0, 0) -- kalau fishMenu child dari menu
+    fishMenu.Position = UDim2.new(1, 10, 0, 0)
     fishMenu.Visible = true
 end)
 
@@ -343,8 +329,10 @@ btn4.MouseButton1Click:Connect(function()
             fish.probability = DefaultProbabilities[fish.name]
         end
     end
-    btn3.Text = "Special Menu"   -- tambahan agar teks kembali default
+    btn3.Text = "Special Menu"
     selectedFish = nil
+
+    forceReloadConfig()
 end)
 
 -- FAST FISHING ON
