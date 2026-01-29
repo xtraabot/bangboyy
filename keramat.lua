@@ -361,11 +361,17 @@ end
     state.activeFishingTask = nil
     env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
 
-    -- paksa rarity selalu Secret
-    env.module_upvr_11.GetRarityWithPity = function(...)
-        return "Secret"
-    end
-end)
+    if not getgenv().HookedRarity then
+    getgenv().HookedRarity = true
+    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+    local oldRarity = env.module_upvr_11.GetRarityWithPity
+    hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
+        if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
+            return "Secret"
+        end
+        return oldRarity(...)
+    end)
+end
 
 -- Secret OFF
 btn2.MouseButton1Click:Connect(function()
