@@ -444,29 +444,37 @@ btn6.MouseButton1Click:Connect(function()
     end
 end)
 
+--loop hook
 task.spawn(function()
     while true do
         local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
         if env and env.module_upvr_11 then
-            local oldRarity = env.module_upvr_11.GetRarityWithPity
-            hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
-                if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
-                    return "Secret"
-                end
-                if selectedFish then
-                    return "Secret"
-                end
-                return oldRarity(...)
-            end)
+            -- hook ulang setiap kali fungsi berubah
+            local currentRarity = env.module_upvr_11.GetRarityWithPity
+            if not getgenv()._rarityHooked or getgenv()._rarityHooked ~= currentRarity then
+                getgenv()._rarityHooked = currentRarity
+                hookfunction(currentRarity, function(...)
+                    if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
+                        return "Secret"
+                    end
+                    if selectedFish then
+                        return "Secret"
+                    end
+                    return currentRarity(...)
+                end)
+            end
 
-            local oldSelect = env.selectFish_upvr
-            hookfunction(env.selectFish_upvr, function(...)
-                if selectedFish then
-                    return {name = selectedFish, rarity = "Secret", probability = 9999999}
-                end
-                return oldSelect(...)
-            end)
+            local currentSelect = env.selectFish_upvr
+            if not getgenv()._selectHooked or getgenv()._selectHooked ~= currentSelect then
+                getgenv()._selectHooked = currentSelect
+                hookfunction(currentSelect, function(...)
+                    if selectedFish then
+                        return {name = selectedFish, rarity = "Secret", probability = 9999999}
+                    end
+                    return currentSelect(...)
+                end)
+            end
         end
-        task.wait(2)
+        task.wait(1)
     end
 end)
