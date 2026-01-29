@@ -242,7 +242,7 @@ local function chooseFish(fishName)
 
     -- hanya ikan yang dipilih diubah
 for _, fish in pairs(FishingConfig.FishTable) do
-    if string.lower(fish.name) == string.lower(fishName) then
+    if string.lower(string.gsub(fish.name, "%s+", "")) == string.lower(string.gsub(fishName, "%s+", "")) then
         fish.probability = 9999999
 
         -- cek rarity langsung dari config (pakai lower biar aman)
