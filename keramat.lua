@@ -127,20 +127,6 @@ local btn6 = createButton("FastRod OFF",2,3)
 local btnMinimal = createButton("Minimal",1,4)
 local btnClose = createButton("Close",2,4)
 
--- Hook permanen untuk GetRarityWithPity
-if not getgenv().HookedRarity then
-    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
-    getgenv().HookedRarity = true
-    local oldRarity = env.module_upvr_11.GetRarityWithPity
-    env.module_upvr_11.GetRarityWithPity = function(...)
-        -- cek apakah tombol Secret ON aktif (warna hijau)
-        if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
-            return "Secret"
-        end
-        return oldRarity(...)
-    end
-end
-
 -- override warna background jadi hitam, teks tetap putih (default)
 btnMinimal.BackgroundColor3 = Color3.fromRGB(0,0,0)
 btnClose.BackgroundColor3   = Color3.fromRGB(0,0,0)
@@ -485,38 +471,29 @@ btn6.MouseButton1Click:Connect(function()
     end
 end)
 
--- Auto rehook loop agar tidak hilang setelah 1x siklus
 task.spawn(function()
     while true do
         local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
         if env and env.module_upvr_11 then
-            -- Hook GetRarityWithPity ulang jika reset
-            if not getgenv().HookedRarity then
-                getgenv().HookedRarity = true
-                local oldRarity = env.module_upvr_11.GetRarityWithPity
-                hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
-                    if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
-                        return "Secret"
-                    end
-                    if selectedFish then
-                        return "Secret"
-                    end
-                    return oldRarity(...)
-                end)
-            end
+            local oldRarity = env.module_upvr_11.GetRarityWithPity
+            hookfunction(env.module_upvr_11.GetRarityWithPity, function(...)
+                if btn1.BackgroundColor3 == Color3.fromRGB(0,200,0) then
+                    return "Secret"
+                end
+                if selectedFish then
+                    return "Secret"
+                end
+                return oldRarity(...)
+            end)
 
-            -- Hook selectFish ulang jika reset
-            if not getgenv().HookedSelectFish then
-                getgenv().HookedSelectFish = true
-                local oldSelect = env.selectFish_upvr
-                hookfunction(env.selectFish_upvr, function(...)
-                    if selectedFish then
-                        return {name = selectedFish, rarity = "Secret", probability = 9999999}
-                    end
-                    return oldSelect(...)
-                end)
-            end
+            local oldSelect = env.selectFish_upvr
+            hookfunction(env.selectFish_upvr, function(...)
+                if selectedFish then
+                    return {name = selectedFish, rarity = "Secret", probability = 9999999}
+                end
+                return oldSelect(...)
+            end)
         end
-        task.wait(2) -- cek ulang tiap 2 detik
+        task.wait(2)
     end
 end)
