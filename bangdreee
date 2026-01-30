@@ -1,3 +1,571 @@
 --[[ TERMUX ]]
 --[[ Shell 1.3 ]]
- return(function(...)local g={"\081\085\071\101\104\115\115\099\083\068\067\050\072\109\071\103","\109\106\085\050\050\055\061\061";"\086\119\079\108\072\113\049\118\065\114\083\119\051\052\118\061","\105\053\121\081\120\051\115\100\077\079\048\099\066\118\073\056\117\054\118\061";"\071\108\081\051\085\048\113\109\116\089\076\119\047\055\061\061","\054\104\117\075\083\053\072\068\114\103\114\109","\117\099\098\057","\120\121\078\105\082\056\047\121\114\102\108\090\080\104\052\103\056\098\050\061";"\074\076\108\098\105\077\122\107\109\055\061\061";"\053\117\119\107\090\103\086\069\069\047\116\084","\103\114\108\104\087\078\089\088\050\083\104\106\113\084\070\098\089\121\061\061";"\075\083\077\089\122\115\102\055\121\081\067\043\086\087\053\119\114\052\055\061","\118\066\047\070\079\048\043\078\055\105\098\055","\048\080\112\098\122\113\082\047";"\065\108\101\079\119\102\065\112","\082\106\083\090\057\069\101\104\108\116\065\120\104\078\082\109\105\105\119\122\111\082\089\120\088\055\061\061","\071\057\105\052\074\051\107\114\048\051\107\068\065\052\053\115\087\055\061\061";"\057\080\056\078\118\105\097\105\116\089\077\112","\071\068\072\111\084\097\080\109\103\100\114\067\120\083\099\088\055\104\122\075\073\076\099\061","\115\050\078\074\054\078\065\070";"\068\056\043\104\087\084\114\101\048\053\118\090\120\076\049\061";"\089\102\109\117\119\105\103\057","\090\054\102\052\100\055\070\089\048\114\119\087\051\097\109\061";"\110\090\087\056\085\081\069\087\097\117\057\120\105\077\103\052\114\055\061\061";"\047\052\065\106\048\051\065\106\074\043\100\053\074\068\117\057";"\099\050\121\078\081\047\101\086\104\082\108\082\118\101\097\052\088\070\061\061","\098\069\049\097\081\047\043\110\043\070\061\061";"\108\120\119\106\115\070\082\090\074\116\099\118\079\070\109\061","\067\049\051\113\099\084\097\087","\071\099\120\081\068\110\049\047\054\089\090\056\067\068\076\050\111\099\106\048\121\070\061\061";"\074\083\108\053\071\054\054\068\104\104\118\061","\122\118\107\119\106\070\087\077\119\108\080\074\078\097\049\043\057\070\061\061","\057\110\049\097\100\121\061\061";"\088\073\109\086\115\072\080\050","\050\116\054\043\067\056\086\067\054\122\051\087\107\118\057\079","\047\112\115\108\047\056\081\061","\053\074\090\120\069\065\117\111\069\083\070\112\114\052\116\067\080\055\061\061","\065\109\105\072\105\084\057\106\048\050\072\112\104\109\054\100","\081\056\086\114\075\100\105\050\109\069\073\111\066\100\074\081\043\117\099\066\084\084\077\061";"\090\056\115\107\087\078\086\087","\113\101\065\086\068\075\097\053\053\097\099\112\088\115\050\103\119\121\061\061","\081\110\118\110\097\111\066\104\122\104\065\103\047\073\109\061";"\106\080\112\105\110\108\114\085\067\102\090\080\113\049\054\088\074\049\061\061","\087\098\074\078\052\100\102\120";"\105\112\065\122\071\051\047\061";"\073\080\083\076\098\053\088\089\085\053\101\048\080\116\118\061";"\089\097\081\053\086\066\056\073";"\097\047\115\078\109\048\078\114\097\112\107\112\103\043\097\113\086\049\061\061","\051\084\112\089\069\109\052\100\081\086\076\110\051\099\118\051\100\070\061\061","\110\068\110\086\101\120\110\090\108\072\069\078\072\115\106\061","\053\054\111\117";"\071\112\054\111\071\051\086\122\105\043\089\061","\101\075\090\110\087\043\106\088\075\121\112\065\047\121\061\061","\102\106\083\087\084\054\082\106\108\075\087\112\089\119\105\080\119\078\071\120\107\112\080\061";"\074\048\109\089\076\055\061\061";"\065\112\115\066\047\112\065\103\089\080\100\057\071\112\065\078\071\112\065\109\089\055\061\061";"\122\085\050\119\090\110\065\121\114\066\101\118\119\111\043\075\075\117\101\050\103\055\061\061";"\052\070\115\088\106\104\079\105";"\100\050\113\117\071\109\086\057\087\086\105\119\050\085\053\115\071\049\061\061","\100\051\071\118\072\112\117\090\116\112\100\065\051\084\047\102\100\121\061\061","\108\086\087\048\108\113\081\089\048\055\061\061","\057\105\101\075\088\070\061\061","\043\086\054\066\105\043\100\053\071\112\115\122\048\112\050\061","\116\055\056\086\072\118\083\102\117\119\115\078\086\076\098\100\122\121\061\061","\119\086\084\051\105\050\073\078\084\121\100\109\101\067\077\061";"\055\052\054\118\048\120\089\102","\121\113\043\109\102\070\061\061","\079\052\103\047\082\099\122\106\082\115\073\080\049\048\109\110\116\074\048\107","\075\102\116\056\056\097\089\097\102\049\061\061";"\116\114\112\069\047\086\110\069\069\049\061\061";"\110\120\090\071\111\047\047\085","\051\112\072\109\071\050\086\057\050\109\115\104\048\115\072\072\065\049\061\061","\053\098\050\083\112\076\113\099\078\049\090\057\081\090\118\061";"\047\082\106\071\049\106\111\043\088\116\053\085\054\049\061\061";"\089\082\077\106\083\102\099\097\073\056\122\054\107\054\118\108\100\086\104\085\080\049\061\061";"\080\100\074\087\047\083\104\097\114\099\077\071\108\109\086\117\090\114\047\088\085\109\121\061","\087\098\082\052\097\099\074\073\065\054\079\081","\071\089\084\057\088\065\043\047\110\116\055\071\047\104\102\122\102\070\061\061";"\054\122\103\082\077\070\106\072\080\099\114\121\107\056\119\057\116\083\108\104\069\100\077\061","\104\108\057\081";"\104\056\048\085\067\121\083\113\113\102\065\115\057\043\049\057\099\113\056\083\049\097\072\117\070\047\116\076";"\117\083\120\099\104\043\085\054\053\121\069\074\108\066\052\069\120\049\061\061","\121\089\074\108\052\070\061\061";"\074\052\053\053\047\121\061\061";"\071\078\089\120\104\085\067\057\083\043\065\065\048\106\117\119";"\083\090\071\051";"\050\076\050\086\097\052\098\103\050\070\061\061";"\107\120\065\085\121\098\086\065\088\073\104\067\117\104\089\061";"\088\050\066\100\071\099\121\100\085\121\061\061","\067\054\115\086\105\070\061\061","\057\072\122\117\084\089\066\098\072\070\061\061";"\071\102\049\117\087\078\057\072\071\065\067\113\087\106\117\084\047\070\061\061";"\065\101\073\099\087\047\119\090\110\120\071\113\097\066\049\076\047\080\077\061";"\069\050\100\086\054\121\061\061";"\116\080\066\068\104\120\075\083\047\051\108\119\116\115\108\087\072\052\050\061";"\055\110\082\086\086\050\076\086\090\113\118\120\050\121\061\061","\105\090\087\114\056\119\119\071\056\088\113\055\119\053\120\116","\085\052\085\049\085\086\112\110";"\098\086\086\098\069\080\109\081\105\118\049\103\056\100\106\061","\090\052\099\110","\115\118\065\103\077\070\061\061";"\082\098\051\072\116\110\048\075\099\055\061\061","\050\080\048\101\075\101\112\057\073\084\111\079\098\068\089\061","\056\068\103\114\066\102\090\087","\070\083\075\077\087\098\047\108\090\121\061\061";"\065\052\115\108\071\080\105\073\047\109\072\099\087\051\117\109","\056\112\120\074\109\054\071\086\118\099\052\048";"\119\084\085\097\109\103\115\074","\051\065\100\053\105\086\047\086\104\085\075\108\087\120\108\053\047\057\050\061";"\089\087\043\118\106\100\084\085\068\067\113\114\065\122\118\118\116\116\101\049\050\049\061\061";"\056\070\072\103\108\109\098\065\118\077\118\121\102\119\105\072\115\098\075\079\114\080\074\061","\070\077\076\065\108\055\061\061";"\085\105\121\103\083\082\116\052";"\077\088\084\070\057\047\056\114\075\089\114\076\043\121\061\061";"\043\086\054\056\074\070\061\061";"\102\048\080\068\099\073\056\076\078\071\074\088\075\102\076\084\043\116\051\104\072\048\077\079";"\102\082\055\099\115\114\084\101\090\117\081\056\071\121\061\061","\067\077\110\065\101\107\070\074\117\073\108\115\113\070\084\050\117\101\080\105\069\087\089\061";"\068\110\055\084\052\043\106\087\105\049\061\061","\108\053\069\055\085\100\115\114\112\068\074\066\054\074\080\085\055\082\106\098\114\072\113\061";"\066\068\076\081\084\082\078\075\088\049\061\061";"\074\056\057\106\105\055\061\061";"\078\072\049\105\073\050\074\061","\105\065\105\068\119\104\053\108\083\051\053\056\055\050\105\118";"\120\074\070\079\068\111\076\079\102\120\085\100\083\117\050\061";"\047\122\120\087\121\074\070\079\087\120\067\076\070\081\101\072\079\080\080\061","\051\087\072\055\112\120\107\072\119\081\103\117\054\079\066\084\043\081\089\061";"\078\098\100\050\112\121\061\061","\105\043\067\103\048\120\089\061";"\047\068\115\103\100\084\105\113\083\080\067\103\065\052\066\055\081\115\074\061","\089\072\099\104\054\102\119\114","\116\065\108\100";"\071\049\097\102\055\076\110\082\067\079\088\087\043\070\061\061","\105\052\065\106\105\052\065\111\071\121\061\061";"\073\068\070\117\122\057\107\089\050\105\122\072\052\114\120\088\051\099\073\057\065\100\121\061";"\087\113\051\078\087\079\120\113\120\075\047\107\077\048\050\098\079\087\053\105\085\121\061\061","\082\070\089\081\057\071\086\086\113\056\105\072\076\067\078\071\101\055\061\061";"\071\052\054\057\087\057\080\120\104\106\108\101\051\112\105\120\083\121\061\061";"\068\109\066\104\098\110\085\106\083\055\061\061";"\089\113\043\106\104\055\051\100\105\072\082\051\102\106\109\061";"\081\086\104\077\117\049\085\075\070\053\049\119\111\049\061\061","\082\101\065\104\086\074\107\066\098\121\061\061";"\070\051\079\107\099\100\069\119\110\049\061\061","\109\121\075\085\104\118\047\061","\122\077\118\113\088\100\117\067\057\083\107\054\055\072\053\119\115\100\080\061";"\066\085\117\054\099\115\050\110\114\051\066\048\109\069\055\089\086\070\061\061","\086\100\115\068\122\114\081\087\080\121\061\061";"\099\108\103\106\122\057\066\077\075\086\078\077\116\053\100\086\100\070\061\061";"\074\070\107\111\106\076\071\050\102\121\061\061";"\081\055\105\079\106\084\053\072\105\065\066\110";"\071\112\054\102\071\085\067\108\048\068\047\061";"\067\087\116\087\108\057\089\067\107\083\080\120\090\053\089\056\085\055\061\061";"\087\112\054\073\087\052\105\086\048\068\072\106\087\051\054\111";"\070\100\065\078\065\068\114\075\112\077\066\086","\054\049\071\082\100\103\043\110\043\049\061\061","\099\113\101\104\072\047\047\097","\108\114\057\088\121\055\061\061","\071\066\107\120\057\070\100\067";"\083\049\049\051\048\049\061\061";"\115\074\099\087\074\100\082\069\084\049\061\061";"\104\065\110\119\108\050\107\077";"\079\110\122\070\081\100\106\084";"\120\069\104\084\115\074\080\061","\078\108\089\110","\115\068\116\056\071\103\067\076\087\070\061\061";"\084\118\067\109\077\057\070\061","\053\097\119\087\088\049\061\061";"\106\080\075\084\090\108\097\103\072\089\120\085","\084\066\101\065\076\120\054\117\082\065\119\055\067\113\067\101\050\107\099\051\051\070\061\061","\102\075\052\048\049\068\048\090\078\121\061\061","\090\087\043\087\074\110\115\087\065\078\098\078\079\049\070\061","\051\068\099\106\100\052\057\084\100\106\117\053\048\086\074\102\087\049\061\061","\118\071\072\085\049\076\086\052\073\055\061\061";"\098\052\102\104\114\112\083\078\057\055\089\061","\119\117\110\074\079\049\122\073\071\117\056\115\087\049\061\061";"\090\109\122\078\121\050\055\078\114\121\061\061","\083\089\068\115\043\098\078\116","\048\051\115\106\087\049\061\061";"\085\112\074\109\120\090\116\066\049\069\080\069\081\080\074\061","\082\103\110\066\122\082\113\051\065\081\076\047\086\082\081\061","\077\079\107\108\069\074\098\077\089\054\048\117\109\072\080\090\048\070\061\061";"\089\088\082\120\054\100\086\049\071\065\083\088\103\103\114\116\088\122\075\051","\075\051\119\084\097\108\081\121\118\106\119\121\098\081\049\056\056\070\061\061";"\057\111\106\116\083\101\070\079\090\070\061\061","\069\072\055\115\076\113\067\104\087\085\102\098","\119\121\061\061";"\109\074\084\116\074\113\100\085\047\103\055\069";"\120\075\080\115\113\119\048\085\103\081\109\068\070\122\122\047\066\073\116\072\085\110\108\072","\102\073\049\100\072\115\084\089\080\120\106\090\113\098\066\100\117\120\087\118\116\075\109\061";"\120\069\121\105","\122\054\103\053\088\055\061\061","\115\114\047\080\067\104\086\097\118\102\097\088\055\072\107\086\065\070\061\061";"\111\115\043\103","\049\110\070\088\076\049\061\061";"\088\098\101\116\085\073\052\117\084\049\061\061";"\047\112\072\053\048\112\070\061";"\043\086\074\047\101\080\101\057\074\113\054\085\084\110\110\084\075\082\088\076\054\087\050\061","\050\083\057\049\079\102\109\112\086\109\120\076\115\047\106\071\104\121\061\061","\085\113\121\114\050\068\057\104\087\118\089\120\099\122\109\077\070\103\118\067\048\052\114\116\119\099\055\114","\112\082\084\067\105\070\061\061","\120\048\084\120\071\070\079\112\084\120\068\050\099\073\109\083\081\055\061\061","\112\078\103\101\119\098\073\043\050\047\079\070\086\119\074\061","\085\110\043\105";"\120\069\055\073\048\113\085\114\080\082\088\052\100\103\122\066\116\053\119\117\077\078\080\100","\115\069\085\076\107\122\054\047";"\086\056\083\107\054\115\047\067\076\081\120\083\106\102\076\116\075\073\114\103","\066\055\103\083\112\066\075\112\087\084\054\088\069\049\061\061";"\114\080\079\100";"\078\066\090\109\120\056\103\074\073\098\107\054\119\065\079\056\071\082\121\078\079\055\061\061";"\054\105\083\120\066\121\061\061","\110\089\108\117","\071\051\107\070\074\051\072\101";"\101\086\083\088\070\110\071\055\114\108\103\057\056\049\061\061","\081\068\071\089\116\104\067\078\055\051\066\072\083\085\071\084";"\048\052\105\083\071\084\105\067\087\065\067\085\100\109\100\052\100\055\061\061";"\066\110\049\090\099\098\077\068\098\043\082\119\057\118\108\102\122\052\083\066\047\121\061\061","\109\087\114\055\054\051\085\048";"\083\106\055\086\050\084\057\102\105\057\067\109\081\109\100\081\087\068\050\061";"\066\073\088\075\072\085\118\054\097\108\115\080\053\078\106\061";"\070\086\105\113\087\055\061\061","\104\047\079\043\075\109\114\113\082\086\067\069\049\121\061\061";"\081\050\057\112\065\043\053\086\074\106\108\078\048\106\115\108";"\069\043\102\081\084\069\117\097\100\049\061\061";"\065\050\100\108\048\104\089\061","\047\112\115\078\087\052\115\056\105\055\061\061","\057\080\122\065\053\074\086\073\085\080\090\066\054\106\072\082\109\049\061\061";"\057\108\104\066\087\049\061\061";"\071\097\043\076\104\043\077\085\085\055\061\061","\089\098\104\070\055\070\066\078\086\066\118\056\052\109\077\088\078\057\114\053\099\118\109\061";"\080\110\113\057\082\086\077\083\113\051\074\061","\100\112\065\102\071\085\067\073\116\055\061\061","\081\077\103\078\081\086\120\111\075\051\108\047\121\070\061\061","\067\054\099\084","\111\087\117\057\079\068\103\102\069\105\098\110\115\049\061\061";"\105\080\067\055\048\057\074\061";"\083\070\069\049\066\115\084\101\122\057\119\043\111\050\084\055\088\111\051\069\088\049\061\061";"\087\078\057\052\072\068\053\098\087\052\066\097\074\106\065\122","\100\080\066\071\120\067\083\056","\084\043\070\080\098\081\120\101\099\101\080\097\101\054\112\101\102\070\054\089\073\052\077\061";"\043\086\054\118\105\051\113\061","\070\102\106\048";"\098\114\071\071\070\052\052\082\051\055\056\080";"\069\086\117\077\121\111\072\074\112\049\061\061";"\090\105\065\053\052\053\049\057\121\078\083\105\099\121\061\061";"\050\107\099\119\055\071\122\090\065\100\043\074";"\120\053\113\100\076\099\122\098\082\115\081\078\098\049\084\109\057\077\050\067\102\050\070\061";"\050\049\087\050","\080\071\074\054\076\101\076\050\075\078\107\084\117\085\086\081\053\089\057\105\103\115\083\087\111\071\104\104\079\072\072\072\051\115\048\110\068\099\053\108\104\083\084\049\088\070\061\061","\120\076\053\113\110\121\061\061","\051\113\077\069\115\047\088\070";"\103\077\089\121\105\048\057\071\109\108\047\085\069\085\071\055\098\121\099\102";"\071\052\054\103\087\120\072\070\074\051\072\057";"\088\119\119\104\071\079\049\048\078\078\100\077\048\108\117\070";"\117\118\056\097\120\114\052\086\086\087\098\101\043\074\118\118\110\070\061\061";"","\100\068\047\097\043\083\052\099\117\121\116\066\081\102\114\110\105\111\047\065\118\080\109\061","\082\118\104\069\116\122\074\111\086\119\073\049\100\080\120\090\069\104\073\078\115\069\089\116\054\079\055\097","\055\052\054\111\048\068\065\078\071\049\061\061";"\084\106\053\054\114\106\065\106\104\114\115\102","\055\074\055\079\085\114\053\100\057\070\061\061","\050\106\067\051\071\086\065\057\072\043\072\053\083\109\106\106\081\104\109\061","\115\079\120\051\056\066\048\120\087\056\099\115\083\103\113\090\084\100\049\076\083\075\105\097\067\100\067\070\112\070\061\061";"\065\050\109\103\065\052\054\087\105\052\066\080\081\084\072\072\072\056\074\061","\105\074\050\113\102\113\054\052\122\118\113\061","\070\089\097\122\054\078\082\051\051\121\061\061";"\075\090\067\107\070\054\087\097\113\081\074\100\111\115\084\080\098\055\061\061","\078\043\118\105\117\067\047\122\053\113\119\102\110\120\089\061","\048\112\065\111","\047\043\081\053\108\049\061\061";"\121\115\122\075\071\087\065\090";"\088\117\100\108\054\084\084\112\048\066\082\050\106\073\108\082\121\087\117\043\052\105\074\061","\049\121\068\056\068\097\068\066\067\079\086\081\104\098\053\085\121\121\061\061","\083\087\056\071\051\089\109\052";"\048\068\050\109\100\122\109\111\052\089\088\088\097\121\061\061";"\048\048\067\119\100\100\076\117\122\070\061\061","\056\107\074\112\105\121\110\078\054\122\070\076\057\115\115\086\084\121\061\061";"\111\103\079\101\069\082\077\084\122\074\118\061";"\101\065\068\100\053\117\087\101\108\121\061\061","\105\051\067\103\055\065\100\067\105\052\057\070\050\106\115\065","\050\082\067\084\109\082\106\075";"\115\083\107\098\106\102\050\122\067\055\061\061","\081\085\053\089\055\109\065\072\074\052\053\114\072\050\072\114";"\076\047\110\065\047\108\117\083\043\122\076\090\080\087\070\061";"\117\109\087\119\088\055\047\082\084\089\088\052\086\074\082\067\102\070\061\061","\098\071\088\120\088\056\110\087\082\055\079\101\106\110\118\061","\057\075\114\114\098\111\048\082\107\057\049\061";"\108\112\070\080\053\088\115\113\087\100\082\122\074\106\055\112\090\066\052\112\069\071\050\061","\048\090\049\085\075\079\072\082";"\049\103\048\086\109\103\069\076\068\102\102\069\070\081\083\069\075\055\077\114\077\101\098\081";"\109\121\075\114\081\066\048\049\051\121\074\047\068\105\050\056\057\105\065\050\097\120\074\061";"\051\108\072\071\103\097\087\107\088\109\097\080\118\047\065\054\084\105\052\049\103\087\077\061";"\087\112\108\055\104\080\105\067\071\051\072\102\087\120\065\090";"\054\121\080\122";"\069\090\104\109\048\120\072\110\107\106\120\108\099\075\047\061","\121\115\068\066\121\055\061\061";"\116\111\076\070\114\116\110\076","\112\048\073\098\049\085\048\083\112\100\087\117\090\050\109\100\104\076\117\067\111\105\086\055\119\116\074\051\070\117\068\106\101\114\084\082\053\053\048\114\056\068\084\073\084\055\061\061","\087\068\100\079\075\055\061\061","\086\065\104\115\047\090\069\084\065\047\086\088\113\090\115\052\076\055\057\116\071\118\109\061";"\079\049\076\100\098\054\101\087\103\081\049\098\121\048\106\074\099\070\061\061";"\087\083\043\099\056\102\054\121\055\121\061\061","\067\056\118\051";"\074\109\066\112\047\106\072\106\100\043\053\106\087\084\053\085\100\050\106\061";"\077\053\120\086\108\073\103\100\110\055\061\061";"\047\120\100\103\087\051\107\056";"\057\115\072\102\106\083\085\121\066\101\104\071\101\089\087\101\088\081\051\112\043\055\061\061";"\116\109\089\086\090\100\075\052\100\075\104\105\079\085\107\078\113\068\067\081\079\086\080\061";"\109\082\102\055\106\078\071\121","\090\053\111\072\100\083\065\084\122\111\117\051\067\073\102\117\066\049\061\061","\108\099\080\115\081\108\086\077\115\122\121\061";"\081\050\086\057\055\120\075\087\047\050\105\105\055\052\066\101\074\055\061\061";"\081\043\049\067\078\070\061\061";"\111\100\074\080\113\049\061\061";"\072\049\079\116\114\081\081\120\081\070\061\061";"\069\099\115\115\099\051\122\121\055\108\111\047\103\075\078\083\117\083\066\086\090\055\061\061";"\122\070\121\048\114\055\061\061","\048\086\069\111","\071\112\115\122\048\112\050\061","\097\066\114\087";"\119\053\077\073\077\049\061\061";"\048\084\089\061";"\047\068\115\111\105\112\054\066","\115\109\076\075\102\104\089\072\070\049\061\061","\051\099\065\048\043\115\119\085\089\069\073\112\111\097\117\048\104\121\061\061","\066\085\043\117\049\074\067\097\097\055\061\061","\086\068\105\090\072\070\061\061","\117\119\053\107\080\113\120\084\050\074\074\116\097\080\099\061";"\087\086\073\079\085\121\051\065\073\113\098\051","\073\118\106\119","\068\108\047\078\075\089\097\065\084\050\108\089\100\071\050\102\117\04
+-- ambil FishingConfig
+local player = game.Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local FishingSystemFolder = ReplicatedStorage:WaitForChild("FishingSystem")
+local FishingConfigModule = FishingSystemFolder:WaitForChild("FishingConfig")
+
+-- backup require asli
+local oldRequire = require
+
+-- variabel yang dipakai di patch
+local selectedFish = nil
+local btn1 -- nanti diisi setelah tombol dibuat
+
+-- override require untuk patch modul
+require = function(module)
+    local result = oldRequire(module)
+    if module == FishingConfigModule then
+        -- Bagian 1: patch selectFish
+        local oldSelect = result.selectFish
+        result.selectFish = function(...)
+            local fish = oldSelect(...)
+            -- jangan ubah nama, cukup boost probability ikan target
+            if selectedFish and fish.name == selectedFish then
+                fish.probability = math.max(fish.probability, 3)
+            end
+            return fish
+        end
+
+        -- Bagian 2: patch GetRarityWithPity
+        local oldRarity = result.GetRarityWithPity
+        result.GetRarityWithPity = function(...)
+            local rarity = oldRarity(...)
+            if selectedFish then
+                for _, f in pairs(result.FishTable) do
+                    if f.name == selectedFish then
+                        if f.rarity == "Secret" and math.random() < 0.7 then
+                            return "Secret"
+                        elseif f.rarity == "Limited" and math.random() < 0.5 then
+                            return "Limited"
+                        end
+                    end
+                end
+            end
+            return rarity
+        end
+    end
+    return result
+end
+
+-- baru require modul setelah patch
+local FishingConfig = require(FishingConfigModule)
+local MiniGameSystem = require(FishingSystemFolder.FishingModules.MinigameSystem)
+
+-- simpan backup selectFish sekali
+if not getgenv().OriginalSelectFish then
+    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+    getgenv().OriginalSelectFish = env.selectFish_upvr
+end
+
+-- Fungsi reload paksa yang lengkap
+local function forceReloadConfig()
+    -- hapus cache modul
+    package.loaded[FishingConfigModule] = nil
+    FishingConfig = require(FishingConfigModule)
+
+    -- update referensi di FishingSystem
+    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+    env.module_upvr_11 = FishingConfig
+
+    -- rebuild DefaultProbabilities agar sinkron
+    DefaultProbabilities = {}
+    for _, fish in pairs(FishingConfig.FishTable) do
+        DefaultProbabilities[fish.name] = fish.probability
+    end
+
+    -- pasang hook sekali di sini (aman, tidak loop terus-menerus)
+    if env and env.module_upvr_11 then
+        local currentRarity = env.module_upvr_11.GetRarityWithPity
+        if not getgenv()._rarityHooked or getgenv()._rarityHooked ~= currentRarity then
+            getgenv()._rarityHooked = currentRarity
+            hookfunction(currentRarity, function(...)
+                local rarity = currentRarity(...)
+                if (btn1 and btn1.BackgroundColor3 == Color3.fromRGB(0,200,0)) or selectedFish then
+                    if math.random() < 0.7 then -- peluang tambahan Secret
+                        return "Secret"
+                    end
+                end
+                return rarity
+            end)
+        end
+
+        local currentSelect = env.selectFish_upvr
+        if not getgenv()._selectHooked or getgenv()._selectHooked ~= currentSelect then
+            getgenv()._selectHooked = currentSelect
+            hookfunction(currentSelect, function(...)
+                local fish = currentSelect(...)
+                if selectedFish then
+                    fish.name = selectedFish
+                    fish.rarity = "Secret"
+                    fish.probability = math.max(fish.probability, 3)
+                end
+                return fish
+            end)
+        end
+    end
+end
+
+-- Backup default sekali
+if not getgenv().OriginalTapCounts then
+    getgenv().OriginalTapCounts = {}
+    for rodName, taps in pairs(FishingConfig.MinigameSettings.rodTapCount) do
+        getgenv().OriginalTapCounts[rodName] = taps
+    end
+    getgenv().OriginalDefaultTap = FishingConfig.MinigameSettings.rodTapCount.default
+    getgenv().OriginalFishingTime = FishingConfig.MinigameSettings.fishingTime
+    getgenv().OriginalApplyZoom = debug.getupvalue(MiniGameSystem.Start, 6)
+    getgenv().OriginalRestoreCamera = debug.getupvalue(MiniGameSystem.SetCallbacks, 2)
+    -- Backup kamera manual
+    local cam = workspace.CurrentCamera
+    getgenv().OriginalFOV = cam.FieldOfView
+    getgenv().OriginalCamType = cam.CameraType
+end
+
+-- Backup probability default dari FishingConfig langsung
+local DefaultProbabilities = {}
+for _, fish in pairs(FishingConfig.FishTable) do
+    DefaultProbabilities[fish.name] = fish.probability
+end
+
+-- Buat ScreenGui dengan cara aman
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "LimitedEditionMenu"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+local padding, titleHeight, btnHeight, spacing, rows, cols = 4, 20, 20, 4, 4, 2
+local menuWidth = 200
+local titleCount = 3 -- jumlah judul (LIMITED, Nama Game, Username)
+local menuHeight = padding*2 + titleCount*titleHeight + rows*btnHeight + rows*spacing
+
+local menu = Instance.new("Frame", screenGui)
+menu.Size = UDim2.new(0, menuWidth, 0, menuHeight)
+menu.Position = UDim2.new(0.5, -menuWidth/2, 0.5, -menuHeight/2)
+menu.BackgroundColor3 = Color3.fromRGB(0,0,0)
+menu.BackgroundTransparency = 0.3
+menu.Active = true
+menu.Draggable = true
+
+local pad = Instance.new("UIPadding", menu)
+pad.PaddingTop = UDim.new(0, padding)
+pad.PaddingBottom = UDim.new(0, padding)
+pad.PaddingLeft = UDim.new(0, padding)
+pad.PaddingRight = UDim.new(0, padding)
+
+-- Judul 1 : LIMITED EDITION
+local title1 = Instance.new("TextLabel", menu)
+title1.Size = UDim2.new(1, 0, 0, titleHeight)
+title1.Position = UDim2.new(0,0,0,0)
+title1.Text = "LIMITED EDITION 1.3"
+title1.TextSize = 10
+title1.BackgroundColor3 = Color3.fromRGB(0,80,0)
+title1.TextColor3 = Color3.fromRGB(255,255,255)
+
+-- Judul 2 : Nama Game
+local title2 = Instance.new("TextLabel", menu)
+title2.Size = UDim2.new(1, 0, 0, titleHeight)
+title2.Position = UDim2.new(0,0,0,titleHeight)
+title2.Text = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+title2.TextSize = 8
+title2.BackgroundColor3 = Color3.fromRGB(0,60,0)
+title2.TextColor3 = Color3.fromRGB(255,255,255)
+
+-- Judul 3 : Username saja
+local title3 = Instance.new("TextLabel", menu)
+title3.Size = UDim2.new(1, 0, 0, titleHeight)
+title3.Position = UDim2.new(0,0,0,titleHeight*2)
+title3.Text = player.Name
+title3.TextSize = 8
+title3.BackgroundColor3 = Color3.fromRGB(0,40,0)
+title3.TextColor3 = Color3.fromRGB(255,255,255)
+
+local function createButton(name, xIndex, yIndex)
+    local innerWidth = menuWidth - padding*2
+    local btnWidth = (innerWidth - spacing) / cols
+    local btn = Instance.new("TextButton", menu)
+    btn.Size = UDim2.new(0, btnWidth, 0, btnHeight)
+    local posX = (xIndex-1) * (btnWidth + spacing)
+local posY = titleCount * titleHeight + spacing + (yIndex-1) * (btnHeight + spacing)
+btn.Position = UDim2.new(0, posX, 0, posY)
+    btn.Text = name
+    btn.TextSize = 8
+    btn.BackgroundColor3 = Color3.fromRGB(170,0,0)
+    btn.BackgroundTransparency = 0.3
+    btn.TextColor3 = Color3.fromRGB(255,255,255)
+    return btn
+end
+
+local btn1 = createButton("Secret ON",1,1)
+local btn2 = createButton("Secret OFF",2,1)
+local btn3 = createButton("Special Menu",1,2)
+local btn4 = createButton("Special OFF",2,2)
+local btn5 = createButton("FastRod ON",1,3)
+local btn6 = createButton("FastRod OFF",2,3)
+local btnMinimal = createButton("Minimal",1,4)
+local btnClose = createButton("Close",2,4)
+
+-- override warna background jadi hitam, teks tetap putih (default)
+btnMinimal.BackgroundColor3 = Color3.fromRGB(0,0,0)
+btnClose.BackgroundColor3   = Color3.fromRGB(0,0,0)
+
+-- patch require untuk FishingConfigModule
+require = function(module)
+    local result = oldRequire(module)
+    if module == FishingConfigModule then
+        -- Bagian 1: selectFish
+        local oldSelect = result.selectFish
+        result.selectFish = function(...)
+            local fish = oldSelect(...)
+            -- jangan ubah nama, cukup boost probability ikan target
+            if selectedFish and fish.name == selectedFish then
+                fish.probability = math.max(fish.probability, 3)
+            end
+            return fish
+        end
+
+        -- Bagian 2: GetRarityWithPity
+        local oldRarity = result.GetRarityWithPity
+        result.GetRarityWithPity = function(...)
+            local rarity = oldRarity(...)
+            if selectedFish then
+                for _, f in pairs(result.FishTable) do
+                    if f.name == selectedFish then
+                        if f.rarity == "Secret" and math.random() < 0.7 then
+                            return "Secret"
+                        elseif f.rarity == "Limited" and math.random() < 0.5 then
+                            return "Limited"
+                        end
+                    end
+                end
+            end
+            return rarity
+        end
+    end
+    return result
+end
+
+-- baru require modul setelah patch
+local FishingConfig = require(FishingConfigModule)
+local MiniGameSystem = require(FishingSystemFolder.FishingModules.MinigameSystem)
+local icon = Instance.new("TextButton", screenGui)
+icon.Size = UDim2.new(0,30,0,30)
+icon.Position = UDim2.new(0,50,0,50)
+icon.Text = "🇵🇸"
+icon.TextSize = 14
+icon.BackgroundColor3 = Color3.fromRGB(0,80,0)
+icon.TextColor3 = Color3.fromRGB(255,255,255)
+icon.Active = true
+icon.Draggable = true
+
+btnMinimal.MouseButton1Click:Connect(function() menu.Visible = false end)
+btnClose.MouseButton1Click:Connect(function() screenGui:Destroy() end)
+icon.MouseButton1Click:Connect(function() menu.Visible = not menu.Visible end)
+
+local function setOn(btn) btn.BackgroundColor3 = Color3.fromRGB(0,200,0) end
+local function setOff(btn) btn.BackgroundColor3 = Color3.fromRGB(170,0,0) end
+
+-- FRAME SUBMENU UNTUK PILIHAN IKAN
+local fishMenu = Instance.new("Frame", menu) -- parent langsung ke menu
+fishMenu.Size = UDim2.new(0,150,0,220)
+fishMenu.Position = UDim2.new(1, 10, 0, 0) -- selalu di kanan menu utama
+fishMenu.BackgroundColor3 = Color3.fromRGB(40,40,40)
+fishMenu.Visible = false
+fishMenu.Active = true
+fishMenu.Draggable = true
+
+-- judul di atas submenu
+local fishTitle = Instance.new("TextLabel", fishMenu)
+fishTitle.Size = UDim2.new(1,0,0,20)
+fishTitle.Text = "Pilih Salah Satu SECRET"
+fishTitle.TextSize = 8
+fishTitle.BackgroundColor3 = Color3.fromRGB(0,0,0)
+fishTitle.TextColor3 = Color3.fromRGB(255,255,255)
+
+-- tombol Hide List
+local hideBtn = Instance.new("TextButton", fishMenu)
+hideBtn.Size = UDim2.new(1,0,0,20)
+hideBtn.Position = UDim2.new(0,0,0,20) -- tepat di bawah judul
+hideBtn.Text = "CANCEL"
+hideBtn.TextSize = 8
+hideBtn.BackgroundColor3 = Color3.fromRGB(100,50,50)
+hideBtn.TextColor3 = Color3.fromRGB(255,255,255)
+
+hideBtn.MouseButton1Click:Connect(function()
+    fishMenu.Visible = false
+end)
+
+-- scrolling area untuk daftar ikan
+local scroll = Instance.new("ScrollingFrame", fishMenu)
+scroll.Size = UDim2.new(1,0,1,-40) -- sisakan ruang untuk judul + tombol hide
+scroll.Position = UDim2.new(0,0,0,40)
+scroll.ScrollBarThickness = 6
+scroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
+
+local layout = Instance.new("UIListLayout", scroll)
+layout.Padding = UDim.new(0,2)
+layout.FillDirection = Enum.FillDirection.Vertical
+layout.SortOrder = Enum.SortOrder.LayoutOrder
+
+-- daftar nama ikan secret (sinkron dengan FishingConfig.FishTable)
+local targetNames = {
+    "Leviathan Core","Joar Cusyu","While Bloodmon","While BloodShack",
+    "Nagasa Putra","Cype Darcogreen","Cype Darcopink","Cype Darcoyellow",
+    "Doplin Pink","Doplin Blue",
+    "Whale Shark","Paus Corda","King Monster","Hammer Shark","Jellyfish core",
+    "Voyage","Amber","Megalodon Core","Ciyup Carber","Cindera Fish","Kuzjuy Shark",
+    "Moster Kelelawar","Suytu Care"
+}
+
+-- alias untuk tampil di tombol list
+local FishAliases = {
+    ["Leviathan Core"]   = "Leviathan",
+    ["Joar Cusyu"]       = "Joar Cusyu",
+    ["While Bloodmon"]   = "Bloodmon",
+    ["While BloodShack"] = "BloodShack",
+    ["Nagasa Putra"]     = "Nagasa",
+    ["Cype Darcogreen"]  = "Darcogreen",
+    ["Cype Darcopink"]   = "Darcopink",
+    ["Cype Darcoyellow"] = "Darcoyellow",
+    ["Doplin Pink"]      = "Doplin Pink",
+    ["Doplin Blue"]      = "Doplin Blue",
+    ["Whale Shark"]      = "Whale Shark",
+    ["Paus Corda"]       = "Paus Corda",
+    ["King Monster"]     = "King Monster",
+    ["Hammer Shark"]     = "Hammer Shark",
+    ["Jellyfish core"]   = "Jellyfish Core",
+    ["Voyage"]           = "Voyage",
+    ["Amber"]            = "Amber",
+    ["Megalodon Core"]   = "Megalodon Core",
+    ["Ciyup Carber"]     = "Ciyup Carber",
+    ["Cindera Fish"]     = "Cindera Fish",
+    ["Kuzjuy Shark"]     = "Kuzjuy Shark",
+    ["Moster Kelelawar"] = "Moster Kelelawar",
+    ["Suytu Care"]       = "Suytu Care"
+}
+
+-- Special Menu (pilih ikan)
+local selectedFish = nil
+local function chooseFish(fishName)
+    selectedFish = fishName
+    btn3.Text = FishAliases[fishName] or fishName
+
+    -- reset semua probability ke default
+    for _, fish in pairs(FishingConfig.FishTable) do
+        if DefaultProbabilities[fish.name] then
+            fish.probability = DefaultProbabilities[fish.name]
+        end
+    end
+
+    -- set probability ikan pilihan + pity (versi aman)
+    for _, fish in pairs(FishingConfig.FishTable) do
+        if fish.name == fishName then
+            -- probability realistis, bukan jutaan
+            fish.probability = math.max(fish.probability, 3)
+
+            if fish.rarity == "Secret" then
+                FishingConfig.Pity.Secret.maxPity = 400
+                FishingConfig.Pity.Secret.baseBoost = 1.2
+                FishingConfig.Pity.Secret.maxMultiplier = 3.0
+                FishingConfig.RarityWeights.Secret = 5
+            elseif fish.rarity == "Limited" then
+                FishingConfig.Pity.Limited.maxPity = 600
+                FishingConfig.Pity.Limited.baseBoost = 1.5
+                FishingConfig.Pity.Limited.maxMultiplier = 3.5
+                FishingConfig.RarityWeights.Limited = 2
+            end
+        end
+    end
+
+    setOn(btn3)
+    fishMenu.Visible = false
+    forceReloadConfig()
+
+    -- reset state FishingSystem
+    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+    env.module_upvr_11 = FishingConfig
+    local state = env.tbl_28_upvr
+    state.casted = false
+    state.fishingInProgress = false
+    state.activeFishingTask = nil
+    env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
+end
+
+-- loop daftar ikan (buat tombol list)
+for i,name in ipairs(targetNames) do
+    local btn = Instance.new("TextButton", scroll)
+    btn.Size = UDim2.new(1,-10,0,20)
+    btn.Position = UDim2.new(0,5,0,(i-1)*22)
+    btn.Text = FishAliases[name] or name
+    btn.TextSize = 8
+    btn.BackgroundColor3 = Color3.fromRGB(0,80,0)
+    btn.TextColor3 = Color3.fromRGB(255,255,255)
+
+    btn.MouseButton1Click:Connect(function()
+        chooseFish(name)
+    end)
+end
+
+-- Secret ON
+btn1.MouseButton1Click:Connect(function()
+    setOn(btn1)
+
+    -- ubah semua ikan Secret/Limited jadi probability lebih tinggi tapi realistis
+    for _, fish in pairs(FishingConfig.FishTable) do
+        if fish.rarity == "Secret" or fish.rarity == "Limited" then
+            fish.probability = math.max(fish.probability, 3) -- aman, tidak ekstrem
+        end
+    end
+
+    -- ubah pengaturan pity & rarity weights ke versi aman
+    FishingConfig.Pity.Secret.maxPity = 500
+    FishingConfig.Pity.Secret.baseBoost = 1.2
+    FishingConfig.Pity.Secret.maxMultiplier = 3.0
+    FishingConfig.RarityWeights.Secret = 5
+
+    FishingConfig.Pity.Limited.maxPity = 3000
+    FishingConfig.Pity.Limited.baseBoost = 0.4
+    FishingConfig.Pity.Limited.maxMultiplier = 1.9
+    FishingConfig.RarityWeights.Limited = 0.001
+
+    -- reload config
+    forceReloadConfig()
+
+    -- override ulang + reset state
+    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+    env.module_upvr_11 = FishingConfig
+    local state = env.tbl_28_upvr
+    state.casted = false
+    state.fishingInProgress = false
+    state.activeFishingTask = nil
+    env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
+end)
+
+-- Secret OFF
+btn2.MouseButton1Click:Connect(function()
+    setOff(btn1)
+
+    -- kembalikan probability ke default
+    for _, fish in pairs(FishingConfig.FishTable) do
+        if DefaultProbabilities[fish.name] then
+            fish.probability = DefaultProbabilities[fish.name]
+        end
+    end
+
+    -- restore pengaturan pity & rarity weights
+    FishingConfig.Pity.Secret.maxPity = 2000
+    FishingConfig.Pity.Secret.baseBoost = 0.3
+    FishingConfig.Pity.Secret.maxMultiplier = 1.6
+    FishingConfig.RarityWeights.Secret = 0.2
+    FishingConfig.Pity.Limited.maxPity = 3000
+    FishingConfig.Pity.Limited.baseBoost = 0.4
+    FishingConfig.Pity.Limited.maxMultiplier = 1.9
+    FishingConfig.RarityWeights.Limited = 0.001
+
+    -- reload config
+    forceReloadConfig()
+
+    -- reset state FishingSystem
+    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+    env.module_upvr_11 = FishingConfig
+    local state = env.tbl_28_upvr
+    state.casted = false
+    state.fishingInProgress = false
+    state.activeFishingTask = nil
+    env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
+end)
+
+-- Special Menu (open submenu)
+btn3.MouseButton1Click:Connect(function()
+    -- tampilkan submenu di kanan menu utama
+    fishMenu.Position = UDim2.new(1, 10, 0, 0)
+    fishMenu.Visible = true
+end)
+
+-- Special OFF
+btn4.MouseButton1Click:Connect(function()
+    setOff(btn3)
+
+    -- restore pengaturan pity & rarity weights
+    FishingConfig.Pity.Secret.maxPity = 2000
+    FishingConfig.Pity.Secret.baseBoost = 0.3
+    FishingConfig.Pity.Secret.maxMultiplier = 1.6
+    FishingConfig.Pity.Limited.maxPity = 3000
+    FishingConfig.Pity.Limited.baseBoost = 0.4
+    FishingConfig.Pity.Limited.maxMultiplier = 1.9
+    FishingConfig.RarityWeights.Secret = 0.2
+    FishingConfig.RarityWeights.Limited = 0.001
+
+    -- kembalikan probability ke default
+    for _, fish in pairs(FishingConfig.FishTable) do
+        if DefaultProbabilities[fish.name] then
+            fish.probability = DefaultProbabilities[fish.name]
+        end
+    end
+
+    -- reset tombol dan variabel
+    btn3.Text = "Special Menu"
+    selectedFish = nil
+
+    -- reload config
+    forceReloadConfig()
+
+    -- reset state FishingSystem
+    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+    env.module_upvr_11 = FishingConfig
+    local state = env.tbl_28_upvr
+    state.casted = false
+    state.fishingInProgress = false
+    state.activeFishingTask = nil
+    env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
+end)
+
+-- FAST FISHING ON
+btn5.MouseButton1Click:Connect(function()
+    setOn(btn5)
+
+    -- Override jadi super cepat
+    for rodName, _ in pairs(FishingConfig.MinigameSettings.rodTapCount) do
+        FishingConfig.MinigameSettings.rodTapCount[rodName] = 3
+    end
+    FishingConfig.MinigameSettings.rodTapCount.default = 3
+    -- FishingConfig.MinigameSettings.fishingTime = 25
+
+    -- Matikan efek zoom kamera (applyZoom saja)
+    debug.setupvalue(MiniGameSystem.Start, 6, function() end)
+
+    -- Set kamera manual langsung
+    local cam = workspace.CurrentCamera
+    cam.FieldOfView = 70
+    cam.CameraType = Enum.CameraType.Custom
+end)
+
+-- FAST FISHING OFF
+btn6.MouseButton1Click:Connect(function()
+    setOff(btn5)
+
+    -- Restore tap count & fishing time
+    if getgenv().OriginalTapCounts then
+        for rodName, taps in pairs(getgenv().OriginalTapCounts) do
+            FishingConfig.MinigameSettings.rodTapCount[rodName] = taps
+        end
+        FishingConfig.MinigameSettings.rodTapCount.default = getgenv().OriginalDefaultTap
+        FishingConfig.MinigameSettings.fishingTime = getgenv().OriginalFishingTime
+    end
+
+    -- Restore fungsi kamera
+    if getgenv().OriginalApplyZoom then
+        debug.setupvalue(MiniGameSystem.Start, 6, getgenv().OriginalApplyZoom)
+    end
+    if getgenv().OriginalRestoreCamera then
+        debug.setupvalue(MiniGameSystem.SetCallbacks, 2, getgenv().OriginalRestoreCamera)
+    end
+
+    -- Restore kamera manual
+    local cam = workspace.CurrentCamera
+    if getgenv().OriginalFOV then cam.FieldOfView = getgenv().OriginalFOV end
+    if getgenv().OriginalCamType then cam.CameraType = getgenv().OriginalCamType
+    end
+end)
+
