@@ -1,7 +1,6 @@
 --[[ TERMUX ]]
 --[[ Shell 1.3 ]]
 -- ambil FishingConfig
--- ambil FishingConfig
 local player = game.Players.LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local FishingSystemFolder = ReplicatedStorage:WaitForChild("FishingSystem")
@@ -261,168 +260,22 @@ icon.MouseButton1Click:Connect(function() menu.Visible = not menu.Visible end)
 local function setOn(btn) btn.BackgroundColor3 = Color3.fromRGB(0,200,0) end
 local function setOff(btn) btn.BackgroundColor3 = Color3.fromRGB(170,0,0) end
 
--- FRAME SUBMENU UNTUK PILIHAN IKAN
-local fishMenu = Instance.new("Frame", menu) -- parent langsung ke menu
-fishMenu.Size = UDim2.new(0,150,0,220)
-fishMenu.Position = UDim2.new(1, 10, 0, 0) -- selalu di kanan menu utama
-fishMenu.BackgroundColor3 = Color3.fromRGB(40,40,40)
-fishMenu.Visible = false
-fishMenu.Active = true
-fishMenu.Draggable = true
-
--- judul di atas submenu
-local fishTitle = Instance.new("TextLabel", fishMenu)
-fishTitle.Size = UDim2.new(1,0,0,20)
-fishTitle.Text = "Pilih Salah Satu SECRET"
-fishTitle.TextSize = 8
-fishTitle.BackgroundColor3 = Color3.fromRGB(0,0,0)
-fishTitle.TextColor3 = Color3.fromRGB(255,255,255)
-
--- tombol Hide List
-local hideBtn = Instance.new("TextButton", fishMenu)
-hideBtn.Size = UDim2.new(1,0,0,20)
-hideBtn.Position = UDim2.new(0,0,0,20) -- tepat di bawah judul
-hideBtn.Text = "CANCEL"
-hideBtn.TextSize = 8
-hideBtn.BackgroundColor3 = Color3.fromRGB(100,50,50)
-hideBtn.TextColor3 = Color3.fromRGB(255,255,255)
-
-hideBtn.MouseButton1Click:Connect(function()
-    fishMenu.Visible = false
-end)
-
--- scrolling area untuk daftar ikan
-local scroll = Instance.new("ScrollingFrame", fishMenu)
-scroll.Size = UDim2.new(1,0,1,-40) -- sisakan ruang untuk judul + tombol hide
-scroll.Position = UDim2.new(0,0,0,40)
-scroll.ScrollBarThickness = 6
-scroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
-
-local layout = Instance.new("UIListLayout", scroll)
-layout.Padding = UDim.new(0,2)
-layout.FillDirection = Enum.FillDirection.Vertical
-layout.SortOrder = Enum.SortOrder.LayoutOrder
-
--- daftar nama ikan secret (sinkron dengan FishingConfig.FishTable)
-local targetNames = {
-    "Leviathan Core","Joar Cusyu","While Bloodmon","While BloodShack",
-    "Nagasa Putra","Cype Darcogreen","Cype Darcopink","Cype Darcoyellow",
-    "Doplin Pink","Doplin Blue",
-    "Whale Shark","Paus Corda","King Monster","Hammer Shark","Jellyfish core",
-    "Voyage","Amber","Megalodon Core","Ciyup Carber","Cindera Fish","Kuzjuy Shark",
-    "Moster Kelelawar","Suytu Care"
-}
-
--- alias untuk tampil di tombol list
-local FishAliases = {
-    ["Leviathan Core"]   = "Leviathan",
-    ["Joar Cusyu"]       = "Joar Cusyu",
-    ["While Bloodmon"]   = "Bloodmon",
-    ["While BloodShack"] = "BloodShack",
-    ["Nagasa Putra"]     = "Nagasa",
-    ["Cype Darcogreen"]  = "Darcogreen",
-    ["Cype Darcopink"]   = "Darcopink",
-    ["Cype Darcoyellow"] = "Darcoyellow",
-    ["Doplin Pink"]      = "Doplin Pink",
-    ["Doplin Blue"]      = "Doplin Blue",
-    ["Whale Shark"]      = "Whale Shark",
-    ["Paus Corda"]       = "Paus Corda",
-    ["King Monster"]     = "King Monster",
-    ["Hammer Shark"]     = "Hammer Shark",
-    ["Jellyfish core"]   = "Jellyfish Core",
-    ["Voyage"]           = "Voyage",
-    ["Amber"]            = "Amber",
-    ["Megalodon Core"]   = "Megalodon Core",
-    ["Ciyup Carber"]     = "Ciyup Carber",
-    ["Cindera Fish"]     = "Cindera Fish",
-    ["Kuzjuy Shark"]     = "Kuzjuy Shark",
-    ["Moster Kelelawar"] = "Moster Kelelawar",
-    ["Suytu Care"]       = "Suytu Care"
-}
-
--- Special Menu (pilih ikan)
-local selectedFish = nil
-local function chooseFish(fishName)
-    selectedFish = fishName
-    btn3.Text = FishAliases[fishName] or fishName
-
-    -- reset semua probability ke default
-    for _, fish in pairs(FishingConfig.FishTable) do
-        if DefaultProbabilities[fish.name] then
-            fish.probability = DefaultProbabilities[fish.name]
-        end
-    end
-
-    -- set probability ikan pilihan + pity (versi aman)
-    for _, fish in pairs(FishingConfig.FishTable) do
-        if fish.name == fishName then
-            -- probability realistis, bukan jutaan
-            fish.probability = math.max(fish.probability, 3)
-
-            if fish.rarity == "Secret" then
-                FishingConfig.Pity.Secret.maxPity = 400
-                FishingConfig.Pity.Secret.baseBoost = 1.2
-                FishingConfig.Pity.Secret.maxMultiplier = 3.0
-                FishingConfig.RarityWeights.Secret = 5
-            elseif fish.rarity == "Limited" then
-                FishingConfig.Pity.Limited.maxPity = 600
-                FishingConfig.Pity.Limited.baseBoost = 1.5
-                FishingConfig.Pity.Limited.maxMultiplier = 3.5
-                FishingConfig.RarityWeights.Limited = 2
-            end
-        end
-    end
-
-    setOn(btn3)
-    fishMenu.Visible = false
-    forceReloadConfig()
-
-    -- reset state FishingSystem
-    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
-    env.module_upvr_11 = FishingConfig
-    local state = env.tbl_28_upvr
-    state.casted = false
-    state.fishingInProgress = false
-    state.activeFishingTask = nil
-    env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
-end
-
--- loop daftar ikan (buat tombol list)
-for i,name in ipairs(targetNames) do
-    local btn = Instance.new("TextButton", scroll)
-    btn.Size = UDim2.new(1,-10,0,20)
-    btn.Position = UDim2.new(0,5,0,(i-1)*22)
-    btn.Text = FishAliases[name] or name
-    btn.TextSize = 8
-    btn.BackgroundColor3 = Color3.fromRGB(0,80,0)
-    btn.TextColor3 = Color3.fromRGB(255,255,255)
-
-    btn.MouseButton1Click:Connect(function()
-        chooseFish(name)
-    end)
-end
-
 -- Secret ON
 btn1.MouseButton1Click:Connect(function()
     setOn(btn1)
 
     -- ubah semua ikan Secret/Limited jadi probability lebih tinggi tapi realistis
     for _, fish in pairs(FishingConfig.FishTable) do
-        if fish.rarity == "Secret" or fish.rarity == "Limited" then
+        if fish.rarity == "Secret" then
             fish.probability = math.max(fish.probability, 3) -- aman, tidak ekstrem
         end
     end
 
-    -- ubah pengaturan pity & rarity weights ke versi aman
-    FishingConfig.Pity.Secret.maxPity = 500
-    FishingConfig.Pity.Secret.baseBoost = 1.2
-    FishingConfig.Pity.Secret.maxMultiplier = 3.0
-    FishingConfig.RarityWeights.Secret = 5
-
-    FishingConfig.Pity.Limited.maxPity = 3000
-    FishingConfig.Pity.Limited.baseBoost = 0.4
-    FishingConfig.Pity.Limited.maxMultiplier = 1.9
-    FishingConfig.RarityWeights.Limited = 0.001
+    -- atur pengaturan pity & rarity weights untuk Secret
+    FishingConfig.Pity.Secret.maxPity = 500 -- default 2000
+    FishingConfig.Pity.Secret.baseBoost = 1.2 -- default 0.3
+    FishingConfig.Pity.Secret.maxMultiplier = 3.0 -- default 1.6
+    FishingConfig.RarityWeights.Secret = 5 -- default 0.2
 
     -- reload config
     forceReloadConfig()
@@ -453,10 +306,6 @@ btn2.MouseButton1Click:Connect(function()
     FishingConfig.Pity.Secret.baseBoost = 0.3
     FishingConfig.Pity.Secret.maxMultiplier = 1.6
     FishingConfig.RarityWeights.Secret = 0.2
-    FishingConfig.Pity.Limited.maxPity = 3000
-    FishingConfig.Pity.Limited.baseBoost = 0.4
-    FishingConfig.Pity.Limited.maxMultiplier = 1.9
-    FishingConfig.RarityWeights.Limited = 0.001
 
     -- reload config
     forceReloadConfig()
@@ -471,26 +320,40 @@ btn2.MouseButton1Click:Connect(function()
     env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
 end)
 
--- Special Menu (open submenu)
+-- Limited ON
 btn3.MouseButton1Click:Connect(function()
-    -- tampilkan submenu di kanan menu utama
-    fishMenu.Position = UDim2.new(1, 10, 0, 0)
-    fishMenu.Visible = true
+    setOn(btn3)
+
+    -- ubah semua ikan Secret/Limited jadi probability lebih tinggi tapi realistis
+    for _, fish in pairs(FishingConfig.FishTable) do
+        if fish.rarity == "Limited" then
+            fish.probability = math.max(fish.probability, 3) -- aman, tidak ekstrem
+        end
+    end
+
+    -- atur pengaturan pity & rarity weights untuk Secret
+    FishingConfig.Pity.Limited.maxPity = 800 -- default 3000
+    FishingConfig.Pity.Limited.baseBoost = 1.5 -- default 0.4
+    FishingConfig.Pity.Limited.maxMultiplier = 3.5 -- default 1.9
+    FishingConfig.RarityWeights.Limited = 2 -- default 0.001
+
+    -- reload config
+    forceReloadConfig()
+
+    -- override ulang + reset state
+    local env = getsenv(player.PlayerScripts:FindFirstChild("FishingSystem"))
+    env.module_upvr_11 = FishingConfig
+    local state = env.tbl_28_upvr
+    state.casted = false
+    state.fishingInProgress = false
+    state.activeFishingTask = nil
+    env.any_CreatePityTracker_result1_upvr = FishingConfig.CreatePityTracker()
 end)
 
--- Special OFF
+
+-- Limited OFF
 btn4.MouseButton1Click:Connect(function()
     setOff(btn3)
-
-    -- restore pengaturan pity & rarity weights
-    FishingConfig.Pity.Secret.maxPity = 2000
-    FishingConfig.Pity.Secret.baseBoost = 0.3
-    FishingConfig.Pity.Secret.maxMultiplier = 1.6
-    FishingConfig.Pity.Limited.maxPity = 3000
-    FishingConfig.Pity.Limited.baseBoost = 0.4
-    FishingConfig.Pity.Limited.maxMultiplier = 1.9
-    FishingConfig.RarityWeights.Secret = 0.2
-    FishingConfig.RarityWeights.Limited = 0.001
 
     -- kembalikan probability ke default
     for _, fish in pairs(FishingConfig.FishTable) do
@@ -499,9 +362,11 @@ btn4.MouseButton1Click:Connect(function()
         end
     end
 
-    -- reset tombol dan variabel
-    btn3.Text = "Special Menu"
-    selectedFish = nil
+    -- restore pengaturan pity & rarity weights Limited
+    FishingConfig.Pity.Limited.maxPity = 3000
+    FishingConfig.Pity.Limited.baseBoost = 0.4
+    FishingConfig.Pity.Limited.maxMultiplier = 1.9
+    FishingConfig.RarityWeights.Limited = 0.001
 
     -- reload config
     forceReloadConfig()
@@ -563,4 +428,3 @@ btn6.MouseButton1Click:Connect(function()
     if getgenv().OriginalCamType then cam.CameraType = getgenv().OriginalCamType
     end
 end)
-
